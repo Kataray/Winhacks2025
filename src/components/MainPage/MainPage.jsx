@@ -6,6 +6,7 @@ const MainPage = () => {
     const [showPopup, setShowPopup] = useState(false);
 
     return (
+
         <div className={styles.container}>
             <div className={styles.ProfileSection}></div>
             <div className={styles.ChallengeFriendSection}></div>
@@ -25,6 +26,9 @@ const MainPage = () => {
             <div className={styles.acheivmentsBox}></div>
             <div className={styles.pointsBox}></div>
             <div className={styles.rankBox}></div>
+
+            <div className={styles.MainContainer}></div>
+
         </div>
     );
 };
