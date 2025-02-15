@@ -1,0 +1,23 @@
+.MainPage {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #FF69B4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+    background-color: #FF69B4;
+    width: 100vw;
+    height: 300px;
+    display: flex;
+}
+
