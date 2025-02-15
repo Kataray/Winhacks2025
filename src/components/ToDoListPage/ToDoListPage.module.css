@@ -1,0 +1,76 @@
+/* ✅ Background Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* ✅ Popup Container */
+.popup {
+    background-color: white;
+    height: 80vh;
+    width: 1000px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+}
+
+/* ✅ Close Button */
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* ✅ Parent Flexbox Container */
+.sectionContainer {
+    display: flex; /* Arrange items in a row */ /* Center the items */
+    gap: 30px; /* Adds space between each section */
+    margin-top: 30px;
+    justify-content: center;
+}
+
+/* ✅ Individual Cards */
+.todosectionBar,
+.compsectionBar,
+.upsectionBar {
+    width: 250px; /* Adjust width */
+    height: 400px; /* Adjust height */
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
+    -10px -10px 20px rgba(255, 255, 255, 0.9); /* Softer dark shadow */
+    /* Use flex to center text */
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 20px;
+    transition: all 0.3s ease;
+}
+
+
+/* ✅ Hover Effect */
+.todosectionBar:hover{
+    transform: translateY(-2px);
+}
+.compsectionBar:hover{
+    transform: translateY(2px);
+}
+.upsectionBar:hover {
+    transform: translateY(-2px);
+}
