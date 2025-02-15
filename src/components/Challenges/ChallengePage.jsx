@@ -11,6 +11,7 @@ const ChallengePage = ({ onClose }) => {
         onClose(); // Close the popup after selection
     };
 
+
     return (
         <div className={styles.overlay}>
             <div className={styles.popup}>
