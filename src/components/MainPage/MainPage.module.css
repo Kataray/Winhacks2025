@@ -46,7 +46,7 @@ body {
     left: 30px;
     bottom: 30px;
     width: 400px;
-    background-color: #ffffff;
+    background-color: #ffa85f;
     cursor: pointer;
     border: none;
     border-radius: 15px;
@@ -61,7 +61,7 @@ body {
     right: 45px;
     bottom: 30px;
     width: 765px;
-    background-color: #ffffff;
+    background-color: #f89464;
     cursor: pointer;
     border: none;
     border-radius: 15px;
@@ -76,7 +76,7 @@ body {
     right: 45px;
     bottom: 300px;
     width: 370px;
-    background-color: #ffffff;
+    background-color: #ffc99e;
     cursor: pointer;
     border: none;
     border-radius: 15px;
@@ -90,7 +90,70 @@ body {
     right: 440px;
     bottom: 300px;
     width: 370px;
-    background-color: #ffffff;
+    background-color: #ffc99e;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+    transition: background-color 0.3s ease;
+}
+
+.acheivmentsBox {
+    position: absolute;
+    top: 20px;
+    right: 610px;
+    bottom: 590px;
+    width: 200px;
+    background-size: cover; /* Ensures the image covers the box */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repetition */
+    background-color: #f89464;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+    transition: background-color 0.3s ease;
+}
+
+.testImage {
+    position: absolute;
+    top: 1px;
+    right: 30px;
+    bottom: 700px;
+    width: 100px;
+    object-fit: cover;
+}
+
+.pointsBox {
+    position: absolute;
+    top: 20px;
+    right: 395px;
+    bottom: 590px;
+    width: 200px;
+    background-size: cover; /* Ensures the image covers the box */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repetition */
+    background-color: #f89464;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+    transition: background-color 0.3s ease;
+}
+
+.rankBox {
+    position: absolute;
+    top: 20px;
+    right: 180px;
+    bottom: 590px;
+    width: 200px;
+    background-size: cover; /* Ensures the image covers the box */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repetition */
+    background-color: #f89464;
     cursor: pointer;
     border: none;
     border-radius: 15px;
