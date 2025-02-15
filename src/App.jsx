@@ -5,8 +5,8 @@ import Second from "./components/SecondarySection/Second.jsx";
 function App() {
     return (
         <div>
-            <MainPage />
-            <Second />
+            <MainPage/>
+            <Second/>
         </div>
     );
 }
