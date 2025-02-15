@@ -2,7 +2,7 @@
     position: relative;
     width: 100vw;
     height: 100vh;
-    background-color: #FF69B4;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,9 +15,9 @@ body {
 
 .container {
     position: relative;
-    background-color: #FF69B4;
+    background-color: #ffffff;
     width: 100vw;
-    height:700px;
+    height:670px;
     display: flex;
 }
 
@@ -39,5 +39,66 @@ body {
 .openButton:hover {
     background-color: #f0f0f0;
 }
+
+.ProfileSection {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    bottom: 30px;
+    width: 400px;
+    background-color: #ffffff;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+    transition: background-color 0.3s ease;
+}
+
+.ChallengeFriendSection {
+    position: absolute;
+    top: 400px;
+    right: 45px;
+    bottom: 30px;
+    width: 765px;
+    background-color: #ffffff;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+    transition: background-color 0.3s ease;
+}
+
+.ToDoSection {
+    position: absolute;
+    top: 100px;
+    right: 45px;
+    bottom: 300px;
+    width: 370px;
+    background-color: #ffffff;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+    transition: background-color 0.3s ease;
+}
+.FlashcardSection {
+    position: absolute;
+    top: 100px;
+    right: 440px;
+    bottom: 300px;
+    width: 370px;
+    background-color: #ffffff;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+    transition: background-color 0.3s ease;
+}
+
+
 
 
