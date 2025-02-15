@@ -14,6 +14,9 @@ const MainPage = () => {
             <div className={styles.testImage}>
                 <img src="/assets/ChopChopLogo.png" alt="Logo" className={styles.testImage}/>
             </div>
+            <div className={styles.testImage}>
+                <img src="/assets/ProfileBgEmpty.png" alt="CircleBg" className={styles.whiteCircleBg}/>
+            </div>
             {/*<button className={styles.openButton} onClick={() => setShowPopup(true)}>*/}
             {/*    Open Popup*/}
             {/*</button>*/}
