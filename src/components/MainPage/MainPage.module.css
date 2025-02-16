@@ -1,6 +1,7 @@
 html {
     height: 100vh;
 }
+
 * {
     margin: 0;
     padding: 0;
@@ -396,13 +397,13 @@ body {
 .avatarLayer {
     width: 67%;
     top: 17%;
-    left:18%;
+    left: 18%;
 }
 
 .avatarLayerHair {
     width: 90%;
     top: 8%;
-    left:4.5%;
+    left: 4.5%;
 }
 
 .avatarLayerShirt {
@@ -425,7 +426,7 @@ body {
 
 .circleCover {
     width: 105%;
-    top:-1%;
+    top: -1%;
     left: -1%;
 }
 
@@ -460,9 +461,21 @@ body {
     color: #b1afaf;
 }
 
+.LeaderboardImg {
+    position: absolute;
+    top: 70%;
+    right: 3%;
+    width: 40%;
+    object-fit: cover;
+    display: flex;
+    border: none;
+    border-radius: 15px;
+    color: #b1afaf;
+}
+
 .PointDisplay {
-    top:0px;
-    left:60px;
+    top: 0px;
+    left: 60px;
     font-size: min(1.5vw, 1.2em);
     font-weight: bold;
     color: #a40000;
@@ -470,9 +483,11 @@ body {
     text-align: center;
 
 }
+
 .AchievementDisplay {
 
 }
+
 .InfoDisplay {
 
 }

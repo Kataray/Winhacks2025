@@ -4,9 +4,9 @@ import styles from "./MainPage.module.css";
 import FriendsListPopup from "../FriendsListPopup/FriendsListPopup.jsx";
 import FlashcardPage from "../Flashcards/FlashcardPage.jsx";
 import ChallengePage from "../Challenges/ChallengePage.jsx";
+import SearchUser from "../ListOfPeople/SearchUser.jsx";
 import {UserContext} from "../../../UserContext.jsx";
 import ToDoListPage from "../ToDoListPage/ToDoListPage.jsx";
-import Leaderboard from "../ListOfPeople/Leaderboard.jsx";
 
 const MainPage = () => {
     const [showEditProfilePopup, setShowEditProfilePopup] = useState(false);
@@ -39,10 +39,10 @@ const MainPage = () => {
         setBio(newBio);
         localStorage.setItem("bio", newBio);
     };
-
     const [showChallengeScreen, setShowChallengeScreen] = useState(false);
     const [showFlashcardScreen, setShowFlashcardScreen] = useState(false);
     const [showToDoScreen, setShowToDoScreen] = useState(false);
+    // const [bio, setBio] = useState("");
     const { user } = useContext(UserContext);
     const [loading, setLoading] = React.useState(true);
 
@@ -59,6 +59,9 @@ const MainPage = () => {
     return (
         <div className={styles.container}>
             <div className={styles.ProfileSection}></div>
+            <div className={styles.ChallengeFriendSection} onClick={() => setShowChallengeScreen(true)}></div>
+            <div className={styles.ToDoSection} onClick={() => setShowToDoScreen(true)}></div>
+            <div className={styles.FlashcardSection} onClick={() => setShowFlashcardScreen(true)}></div>
 
             <div className={styles.testImage}>
                 <img src="/assets/ChopChopLogo.png" alt="Logo" className={styles.testImage}/>
@@ -88,12 +91,6 @@ const MainPage = () => {
                 </div>
             )}
 
-            {/*<div className={styles.ThickCircle}>*/}
-            {/*    <img src="/assets/ThickWhiteCircle.png" alt="CircleBg" className={styles.ThickCircle}/>*/}
-            {/*</div>*/}
-            <div className={styles.ThickCircle}>
-                <img src="/assets/ThickWhiteCircle.png" alt="CircleBg" className={styles.ThickCircle}/>
-            </div>
             <div className={styles.Biography}>
                 <textarea
                     className={styles.BioInput}
@@ -101,10 +98,6 @@ const MainPage = () => {
                     value={bio}
                     onChange={(e) => setBio(e.target.value)}
                 />
-            </div>
-
-            <div className={styles.profilePic}>
-                <img src="/assets/ProfilePic.png" alt="Logo" className={styles.profilePic}/>
             </div>
 
             <div
@@ -123,6 +116,8 @@ const MainPage = () => {
             </div>
             {showFriendsPopup && <FriendsListPopup onClose={() => setShowFriendsPopup(false)}/>}
 
+            <div className={styles.NameDisplay}></div>
+
             <div className={styles.Biography}>
                 <textarea
                     className={styles.BioInput}
@@ -132,16 +127,17 @@ const MainPage = () => {
                 />
             </div>
 
-            <div className={styles.ChallengeFriendSection} onClick={() => setShowChallengeScreen(true)}></div>
-            <div className={styles.ToDoSection} onClick={() => setShowToDoScreen(true)}>
+            <div className={styles.ToDoImg}>
                 <img src="/assets/Todo.png" alt="Logo" className={styles.ToDoImg}/>
             </div>
-            <div className={styles.FlashcardSection} onClick={() => setShowFlashcardScreen(true)}>
-                <img src="/assets/Flashcards.png" alt="Logo" className={styles.flashCardImg}/>
+            <div className={styles.flashCardImg}>
+                <img src="/assets/FlashCardImg.png" alt="Logo" className={styles.flashCardImg}/>
             </div>
-
-            {showFriendsPopup && <FriendsListPopup onClose={() => setShowFriendsPopup(false)} />}
-            {showToDoScreen && <ToDoListPage onClose={() => setShowToDoScreen(false)} /> }
+            <div className={styles.LeaderboardImg}>
+                <img src="/assets/LeadboardImg.png" alt="Logo" className={styles.LeaderboardImg}/>
+            </div>
+            {showFriendsPopup && <FriendsListPopup onClose={() => setShowFriendsPopup(false)}/>}
+            {showToDoScreen && <ToDoListPage onClose={() => setShowToDoScreen(false)}/>}
             {showFlashcardScreen && <FlashcardPage id="flashcardPopup" onClose={() => setShowFlashcardScreen(false)}/>}
             {showChallengeScreen && <ChallengePage onClose={() => setShowChallengeScreen(false)}/>}
 
