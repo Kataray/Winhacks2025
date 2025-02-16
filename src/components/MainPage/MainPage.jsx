@@ -2,9 +2,10 @@ import React, {useContext, useEffect, useState} from "react";
 import styles from "./MainPage.module.css";
 // import Popup from "../Popup/Popup";
 // import EditProfilePopup from "../EditProfilePopup/EditProfilePopup.jsx";
-// import FriendsListPopup from "../FriendsListPopup/FriendsListPopup.jsx";
+import FriendsListPopup from "../FriendsListPopup/FriendsListPopup.jsx";
 import FlashcardPage from "../Flashcards/FlashcardPage.jsx";
 import ChallengePage from "../Challenges/ChallengePage.jsx";
+import SearchUser from "../ListOfPeople/SearchUser.jsx";
 import {UserContext} from "../../../UserContext.jsx";
 
 const MainPage = () => {
@@ -39,9 +40,6 @@ const MainPage = () => {
             <div className={styles.whiteCircleBg}>
                 <img src="/assets/ProfileBgEmpty.png" alt="CircleBg" className={styles.whiteCircleBg}/>
             </div>
-            {/*<button className={styles.openButton} onClick={() => setShowPopup(true)}>*/}
-            {/*    Open FriendsListPopup*/}
-            {/*</button>*/}
             {/*{showPopup && <FriendsListPopup onClose={() => setShowPopup(false)} />}*/}
 
 
@@ -63,21 +61,21 @@ const MainPage = () => {
                 <img src="/assets/ProfilePic.png" alt="Logo" className={styles.profilePic}/>
             </div>
 
-            {/*<div*/}
-            {/*    className={styles.EditProfileButton}*/}
-            {/*    onClick={() => setShowEditProfilePopup(true)}*/}
-            {/*>*/}
-            {/*    Edit Profile*/}
-            {/*</div>*/}
+            <div
+                className={styles.EditProfileButton}
+                onClick={() => setShowEditProfilePopup(true)}
+            >
+                Edit Profile
+            </div>
             {/*{showEditProfilePopup && <EditProfilePopup onClose={() => setShowEditProfilePopup(false)} />}*/}
 
-            {/*<div*/}
-            {/*    className={styles.FriendsButton}*/}
-            {/*    onClick={() => setShowFriendsPopup(true)}*/}
-            {/*>*/}
-            {/*    Friends*/}
-            {/*</div>*/}
-            {/*{showFriendsPopup && <FriendsListPopup onClose={() => setShowFriendsPopup(false)} />}*/}
+            <div
+                className={styles.FriendsButton}
+                onClick={() => setShowFriendsPopup(true)}
+            >
+                Friends
+            </div>
+            {showFriendsPopup && <FriendsListPopup onClose={() => setShowFriendsPopup(false)} />}
 
             {showFlashcardScreen && <FlashcardPage id="flashcardPopup" onClose={() => setShowFlashcardScreen(false)}/>}
             {showChallengeScreen && <ChallengePage onClose={() => setShowChallengeScreen(false)}/>}
@@ -85,6 +83,7 @@ const MainPage = () => {
 
             <div className={styles.NameDisplay}>{user?.username}</div>
 
+            {/*<SearchUser />*/}
         </div>
     );
 };

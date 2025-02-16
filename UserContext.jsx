@@ -62,6 +62,17 @@ export function UserProvider({ children }) {
             .catch((error) => console.error("Error updating points:", error));
     }
 
+    const addFriend = (friendId) => {
+        if (!user) return;
+        const userRef = ref(db, `anonymousUsers/${auth.currentUser.uid}`);
+        update(userRef, { friends: [...user.friends, friendId] })
+            .then(() => {
+                setUser((prev) => ({ ...prev, friends: [...user.friends, friendId] }));
+                console.log("Friend added successfully!");
+            })
+            .catch((error) => console.error("Error adding friend:", error));
+    }
+
     const addFlashcardSet = (setId, setName, setDescription) => {
         if (!user) return;
         const userRef = ref(db, `anonymousUsers/${auth.currentUser.uid}/flashcardSets`);
@@ -111,7 +122,7 @@ export function UserProvider({ children }) {
     };
 
     return (
-        <UserContext.Provider value={{ user, updateUsername, updateBio, updatePoints, addFlashcardSet, addCardToSet }}>
+        <UserContext.Provider value={{ user, updateUsername, updateBio, updatePoints, addFlashcardSet, addCardToSet, addFriend }}>
             {children}
         </UserContext.Provider>
     );
