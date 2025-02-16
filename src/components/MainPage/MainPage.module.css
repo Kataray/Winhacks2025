@@ -1,117 +1,117 @@
 html {
     height: 100vh;
 }
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    .MainPage {
-        position: relative;
-        width: 100vw;
-        height: 100vh;
-        background-color: #ffffff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden; /* Prevents resizing content when viewport is smaller */
-    }
+.MainPage {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevents resizing content when viewport is smaller */
+}
 
-    body {
-        margin: 0;
-        overflow-x: hidden;
-    }
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
 
-    .container {
-        /*position: relative;*/
-        background-color: #ffffff;
-        /*width: 100vw;*/
-        /*height: 670px;*/
-        /*display: flex;*/
-        box-sizing: border-box;
-        padding: 10px; /* Adds padding when resized too large */
-        overflow: hidden; /* Ensures no element resizes */
-    }
+.container {
+    /*position: relative;*/
+    background-color: #ffffff;
+    /*width: 100vw;*/
+    /*height: 670px;*/
+    /*display: flex;*/
+    box-sizing: border-box;
+    padding: 10px; /* Adds padding when resized too large */
+    overflow: hidden; /* Ensures no element resizes */
+}
 
-    .openButton {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        padding: 10px 15px;
-        font-size: 16px;
-        cursor: pointer;
-        border: none;
-        border-radius: 5px;
-        background-color: #fff;
-        color: #333;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-        transition: background-color 0.3s ease;
-    }
+.openButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
 
-    .openButton:hover {
-        background-color: #f0f0f0;
-    }
+.openButton:hover {
+    background-color: #f0f0f0;
+}
 
-    .ProfileSection {
-        position: absolute;
-        top: 5%;
-        left: 3%;
-        bottom: 5%;
-        width: 30%;
-        background-color: #ffa85f;
-        cursor: pointer;
-        border: none;
-        border-radius: 15px;
-        color: #333;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
-        transition: background-color 0.3s ease;
-    }
+.ProfileSection {
+    position: absolute;
+    top: 5%;
+    left: 3%;
+    bottom: 5%;
+    width: 30%;
+    background-color: #ffa85f;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+    transition: background-color 0.3s ease;
+}
 
-    .ChallengeFriendSection {
-        position: absolute;
-        top: 60%;
-        right: 3%;
-        bottom: 5%;
-        width: 60%;
-        background-color: #f89464;
-        cursor: pointer;
-        border: none;
-        border-radius: 15px;
-        color: #333;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
-        transition: background-color 0.3s ease;
-    }
+.ChallengeFriendSection {
+    position: absolute;
+    top: 60%;
+    right: 3%;
+    bottom: 5%;
+    width: 60%;
+    background-color: #f89464;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+    transition: background-color 0.3s ease;
+}
 
-    .ToDoSection {
-        position: absolute;
-        top: 15%;
-        right: 3%;
-        bottom: 45%;
-        width: 29%;
-        background-color: #ffc99e;
-        cursor: pointer;
-        border: none;
-        border-radius: 15px;
-        color: #333;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
-        transition: background-color 0.3s ease;
-    }
+.ToDoSection {
+    position: absolute;
+    top: 15%;
+    right: 3%;
+    bottom: 45%;
+    width: 29%;
+    background-color: #ffc99e;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+    transition: background-color 0.3s ease;
+}
 
-    .FlashcardSection {
-        position: absolute;
-        top: 15%;
-        right: 34%;
-        bottom: 45%;
-        width: 29%;
-        background-color: #ffc99e;
-        cursor: pointer;
-        border: none;
-        border-radius: 15px;
-        color: #333;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
-        transition: background-color 0.3s ease;
-    }
+.FlashcardSection {
+    position: absolute;
+    top: 15%;
+    right: 34%;
+    bottom: 45%;
+    width: 29%;
+    background-color: #ffc99e;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+    transition: background-color 0.3s ease;
+}
 
 .acheivmentsBox {
     position: absolute;
@@ -206,29 +206,29 @@ html {
 }
 
 
-    .whiteCircleBg {
-        position: absolute;
-        top: 8%;
-        left: 3.5%;
-        bottom: 60%;
-        width: 50%;
-        object-fit: cover;
+.whiteCircleBg {
+    position: absolute;
+    top: 8%;
+    left: 3.5%;
+    bottom: 60%;
+    width: 50%;
+    object-fit: cover;
 
-    }
+}
 
-    .BioArea {
-        position: absolute;
-        top: 62%;
-        left: 5%;
-        bottom: 10%;
-        width: 26%;
-        background-color: #ffffff;
-        object-fit: cover;
-        display: flex;
-        border: none;
-        border-radius: 15px;
-        color: #b1afaf;
-    }
+.BioArea {
+    position: absolute;
+    top: 62%;
+    left: 5%;
+    bottom: 10%;
+    width: 26%;
+    background-color: #ffffff;
+    object-fit: cover;
+    display: flex;
+    border: none;
+    border-radius: 15px;
+    color: #b1afaf;
+}
 
 .Biography {
     position: absolute;
@@ -244,9 +244,16 @@ html {
     padding: 10px;
 }
 
-body {
-    margin: 0;
-    overflow-x: hidden;
+.BioInput {
+    width: 90%;
+    height: 90%;
+    background: transparent;
+    border: none;
+    resize: none; /* Prevent resizing */
+    font-size: min(1.2vw, 1.5em);
+    color: #b44d19;
+    outline: none; /* Remove blue outline on focus */
+    font-family: Arial, sans-serif;
 }
 
 .profilePic {
@@ -260,34 +267,48 @@ body {
     border: none;
     border-radius: 15px;
     color: #b1afaf;
+
 }
 
-.openButton {
+.EditProfileButton {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 10px 15px;
-    font-size: 16px;
+    top: 70%;
+    left: 6%;
+    width: 11.5%;
+    height: 5%;
+    background-color: #f89464;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: min(1.5vw, 1.2em);
+    font-weight: bold;
+    color: white;
     cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: #fff;
-    color: #333;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
+    text-align: center;
 }
 
-.openButton:hover {
-    background-color: #f0f0f0;
+.EditProfileButton:hover {
+    background-color: #e27b50;
 }
 
-.ProfileSection {
+
+.FriendsButton {
     position: absolute;
-    top: 5%;
-    left: 3%;
-    bottom: 5%;
-    width: 30%;
-    background-color: #ffa85f;
+    top: 70%;
+    left: 18.5%;
+    width: 11.5%;
+    height: 5%; /* Adjust height */
+    background-color: #f89464;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: min(1.5vw, 1.2em);
+    font-weight: bold;
+    color: white;
     cursor: pointer;
     text-align: center;
 }
@@ -427,6 +448,16 @@ body {
     color: #b1afaf;
 }
 
+.flashCardImg {
+    position: absolute;
+    top: 22%;
+    right: 25.5%;
+    width: 38%;
+    object-fit: cover;
+    display: flex;
+    border: none;
+    border-radius: 15px;
+    color: #b1afaf;
 }
 
 .PointDisplay {
@@ -440,7 +471,7 @@ body {
 
 }
 .AchievementDisplay {
-  
+
 }
 .InfoDisplay {
 
