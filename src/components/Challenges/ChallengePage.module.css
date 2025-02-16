@@ -11,14 +11,13 @@
     z-index: 1000;
 }
 .popup {
-    padding: 50px;
-    font-size: 120%;
+    padding: 20px;
+    font-size: 90%;
     border-radius: 10px;
     position: relative;
     width: 1000px;
     height: 500px;
     background: linear-gradient(to bottom right, #ffc99e, #f5b97f);
-
     display: flex;
     flex-direction: column; /* Stacks elements vertically */
     align-items: center; /* Centers horizontally */
@@ -26,8 +25,20 @@
     text-align: center;
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
 
+}
+h1 {
+    margin-bottom: 14px;
+    font-family: "Carter One", sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-variant: all-small-caps;
+    font-weight: 700; 
+    line-height: 26px;
+    color: white;
+} 
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 .friendList {
     padding: 5%;
     display: flex;
@@ -117,7 +128,7 @@
 }
 
 .flashcardItem {
-    padding: 20px 20px;
+    padding: 25px 20px;
     background: linear-gradient(135deg, #ff9f68, #ff8e51); /* Gradient from orange to red */
     color: white;
     border-radius: 10px;
@@ -134,6 +145,8 @@
 
 .flashcardItem:hover {
     background: linear-gradient(45deg, #ff6b42, #e88b50);
+    animation: shake 0.3s ease-in-out;
+
 }
 
 .flashcard {
@@ -181,4 +194,223 @@
     background: linear-gradient(45deg, #ff6b42, #e88b50); /* Darker gradient */
     transform: scale(1.1); /* Slightly enlarges */
 
+}
+
+
+.quizContainer {
+    text-align: center;
+    padding: 20px;
+}
+
+.questionContainer {
+    margin-bottom: 20px;
+}
+
+.setName{
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.questionText {
+    font-variant-caps: all-small-caps;
+    overflow: auto;
+    justify-content: center;
+    padding: 30px;
+    font-size: 35px;
+    font-family: "Carter One", sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
+.answerButtons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.answerButton {
+    padding: 20px 30px;
+    background: linear-gradient(135deg, #ff9f68, #ff8e51); /* Gradient from orange to red */
+    color: beige;
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    font-size: 25px;
+    width: 220px;
+    height: 150px;
+    max-width: 400px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.answerButton:hover {
+    background: linear-gradient(45deg, #ff6b42, #e88b50);
+    animation: shake 0.3s ease-in-out;
+}
+
+.timerContainer {
+     position: absolute;
+     top: 15px;
+     right: 20px;
+     width: 150px;
+     height: 150px;
+     display:flex;
+
+ }
+
+.progressCircle {
+    width: 100px;
+    height: 100px;
+    transform: rotate(-90deg);
+}
+
+.backgroundCircle {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 8;
+}
+
+.foregroundCircle {
+    fill: none;
+    stroke: #ff6b42;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 251.2; /* Full circumference of the circle */
+    stroke-dashoffset: 251.2;
+    transition: stroke-dashoffset 0.2s linear;
+}
+
+.timerText {
+    font-size: 20px;
+    fill: white;
+    font-weight: bold;
+    justify-content: normal;
+    transform: rotate(90deg);
+    transform-origin: 50% 50%;
+
+}.correctNotification, .wrongNotification {
+     background: linear-gradient(45deg, #ff6b42, #e88b50);
+     color: white;
+     padding: 10px;
+     position: absolute; /* Absolute positioning inside the popup */
+     top: 80%; /* Adjust position as needed */
+     left: 50%;
+     transform: translateX(-50%);
+     border-radius: 5px;
+     z-index: 1000;
+
+     animation: zoomIn 0.2s ease-out forwards, fadeOut 0.3s 0.4s forwards ; /* Apply zoom-in animation */
+    pointer-events: none;
+ }
+
+@keyframes zoomIn {
+    0% {
+        transform: translateX(-50%) scale(0.5); /* Start with smaller size */
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-50%) scale(1.5); /* End with normal size */
+        opacity: 0.5;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.scoreContainer {
+    position: absolute;
+    top: 20px; /* Positioning below the timer circle */
+    left: 20px;
+    background: linear-gradient(45deg, #ff9f68, #e88b50);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Animation when score increases */
+.scoreIncrease {
+    animation: scorePop 0.3s ease-out;
+}
+
+@keyframes scorePop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.resultsContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: beige;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 400px;
+    font-family: "Carter One", sans-serif;
+    font-size: 22px;
+}
+
+.resultsTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px; /* Adds space below title */
+    text-align: center;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.retryButton,
+.exitButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.retryButton:hover {
+    background-color: #0056b3;
+}
+
+.exitButton {
+    background-color: #dc3545;
+}
+
+.exitButton:hover {
+    background-color: #a71d2a;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
