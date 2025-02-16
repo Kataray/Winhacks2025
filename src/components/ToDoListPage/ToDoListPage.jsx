@@ -7,7 +7,7 @@ const MAX_TASKS = 5; // ✅ Set task limit
 const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
     const [isPopupOpen, setIsPopupOpen] = useState(false); // ✅ Controls popup
     const [currentCategory, setCurrentCategory] = useState(null); // ✅ Track category
-    const [localTasks, setLocalTasks] = useState(tasks); // ✅ Local state for tasks
+    const [localTasks, setLocalTasks] = useState(tasks || { school: [], home: [], misc: [] });
 
     // ✅ Function to store applied tasks in the correct category
     const handleApplyTasks = (newTasks) => {
@@ -18,6 +18,34 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
             }));
         }
         setIsPopupOpen(false); // ✅ Close popup
+    };
+
+    const handleDeleteTask = (category, index) => {
+        setLocalTasks((prevTasks) => {
+            const updatedTasks = [...prevTasks[category]];
+            updatedTasks.splice(index, 1); // ✅ Remove task
+            return { ...prevTasks, [category]: updatedTasks };
+        });
+    };
+
+    // ✅ Function to move a task up
+    const handleMoveUp = (category, index) => {
+        setLocalTasks((prevTasks) => {
+            if (index === 0) return prevTasks; // ✅ Prevent moving the first task up
+            const updatedTasks = [...prevTasks[category]];
+            [updatedTasks[index], updatedTasks[index - 1]] = [updatedTasks[index - 1], updatedTasks[index]]; // ✅ Swap
+            return { ...prevTasks, [category]: updatedTasks };
+        });
+    };
+
+    // ✅ Function to move a task down
+    const handleMoveDown = (category, index) => {
+        setLocalTasks((prevTasks) => {
+            if (index === prevTasks[category].length - 1) return prevTasks; // ✅ Prevent moving the last task down
+            const updatedTasks = [...prevTasks[category]];
+            [updatedTasks[index], updatedTasks[index + 1]] = [updatedTasks[index + 1], updatedTasks[index]]; // ✅ Swap
+            return { ...prevTasks, [category]: updatedTasks };
+        });
     };
 
     // ✅ Final Apply Button - Saves All Tasks and Goes Back to Main Page
@@ -49,7 +77,21 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                         </button>
                         <ul className={styles.taskList}>
                             {localTasks.school.map((task, index) => (
-                                <li key={index} className={styles.taskItem}>{task}</li>
+                                <li key={index} className={styles.taskItem}>
+                                    {task}
+                                    {/* ❌ This is incorrect because `category` is not defined */}
+                                    <button className={styles.moveUpButton}
+                                            onClick={() => handleMoveUp("school", index)}>▲
+                                    </button>
+
+                                    <button className={styles.moveDownButton}
+                                            onClick={() => handleMoveDown("school", index)}>▼
+                                    </button>
+
+                                    <button className={styles.deleteButton}
+                                            onClick={() => handleDeleteTask("school", index)}>❌
+                                    </button>
+                                </li>
                             ))}
                         </ul>
                     </div>
@@ -69,7 +111,22 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                         </button>
                         <ul className={styles.taskList}>
                             {localTasks.home.map((task, index) => (
-                                <li key={index} className={styles.taskItem}>{task}</li>
+                                <li key={index} className={styles.taskItem}>
+                                    {task}
+
+                                    {/* ✅ Corrected buttons */}
+                                    <button className={styles.moveUpButton}
+                                            onClick={() => handleMoveUp("home", index)}>▲
+                                    </button>
+
+                                    <button className={styles.moveDownButton}
+                                            onClick={() => handleMoveDown("home", index)}>▼
+                                    </button>
+
+                                    <button className={styles.deleteButton}
+                                            onClick={() => handleDeleteTask("home", index)}>❌
+                                    </button>
+                                </li>
                             ))}
                         </ul>
                     </div>
@@ -89,7 +146,22 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                         </button>
                         <ul className={styles.taskList}>
                             {localTasks.misc.map((task, index) => (
-                                <li key={index} className={styles.taskItem}>{task}</li>
+                                <li key={index} className={styles.taskItem}>
+                                    {task}
+
+                                    {/* ✅ Corrected buttons */}
+                                    <button className={styles.moveUpButton}
+                                            onClick={() => handleMoveUp("misc", index)}>▲
+                                    </button>
+
+                                    <button className={styles.moveDownButton}
+                                            onClick={() => handleMoveDown("misc", index)}>▼
+                                    </button>
+
+                                    <button className={styles.deleteButton}
+                                            onClick={() => handleDeleteTask("misc", index)}>❌
+                                    </button>
+                                </li>
                             ))}
                         </ul>
                     </div>
