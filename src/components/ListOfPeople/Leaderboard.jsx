@@ -58,10 +58,10 @@ const UserTable = () => {
                                         index === 0 && <TableCell style={{"color": "orange", "fontSize": "25px", "fontWeight": "bold"}}>#{index + 1}</TableCell>
                                     }
                                     {
-                                        index === 1 && <TableCell style={{"color": "orangered", "fontSize": "20px", "fontWeight": "bold"}}>#{index + 1}</TableCell>
+                                        index === 1 && <TableCell style={{"color": "orangered", "fontSize": "22px", "fontWeight": "bold"}}>#{index + 1}</TableCell>
                                     }
                                     {
-                                        index === 2 && <TableCell style={{"color": "bronze", "fontSize": "15px", "fontWeight": "bold"}}>#{index + 1}</TableCell>
+                                        index === 2 && <TableCell style={{"color": "brown", "fontSize": "19px", "fontWeight": "bold"}}>#{index + 1}</TableCell>
                                     }
                                     { index > 2 && <TableCell>#{index + 1}</TableCell>}
                                 </>
