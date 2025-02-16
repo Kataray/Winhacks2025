@@ -1,0 +1,104 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup {
+    background-color: white;
+    height: 90%;
+    width: 50%;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+}
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.addTasks {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 40px;
+    cursor: pointer;
+}
+.inputField {
+    width: 50%;
+    height: 50px;
+    border-radius: 20px;
+    margin-top: 20px; /* Ajust the spacing as needed */
+    padding: 10px 20px;
+    background-color: white;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
+    -10px -10px 20px rgba(255, 255, 255, 0.9); /* Softer dark shadow */
+    cursor: pointer;
+}
+.addButton{
+    width: 30%;
+    height: 50px;
+    border-radius: 20px;
+    margin-top: 20px; /* Ajust the spacing as needed */
+    padding: 10px 20px;
+    background-color: #ec8d52;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
+    -10px -10px 20px rgba(255, 255, 255, 0.9); /* Softer dark shadow */
+    cursor: pointer;
+
+}
+.taskList {
+    list-style: none;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.taskItem {
+    width: 50%;
+    height: 50px;
+    border-radius: 20px;
+    margin-top: 30px; /* Ajust the spacing as needed */
+    margin-left: 100px;
+    padding: 10px 20px;
+    background-color: #e49665;
+    border-color: black;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
+    -10px -10px 20px rgba(255, 255, 255, 0.9); /* Softer dark shadow */
+    cursor: pointer;
+}
+.applyButton {
+    position: absolute;
+    bottom: 20px; /* Distance from the bottom */
+    right: 20px; /* Distance from the right */
+    width: 30%;
+    height: 50px;
+    border-radius: 20px; /* Ajust the spacing as needed */
+    padding: 10px 20px;
+    background-color: #a53030;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
+    -10px -10px 20px rgba(255, 255, 255, 0.9); /* Softer dark shadow */
+    cursor: pointer;
+}
+
+.errorText {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
