@@ -89,7 +89,7 @@ const MainPage = () => {
             </div>
 
             <div className={styles.acheivmentsBox}>Achievements</div>
-            <div className={styles.pointsBox}>Total Points: ____</div>
+            <div className={styles.pointsBox}>Total Points: {user?.points}</div>
             <div className={styles.rankBox} onClick={() => setShowInformationPopup(true)}>
                 Information
             </div>
