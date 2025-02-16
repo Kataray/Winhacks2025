@@ -1,3 +1,4 @@
+
 import React, {useContext, useEffect, useState} from "react";
 import styles from "./FriendsListPopup.module.css";
 import Button from "@mui/material/Button";
@@ -65,8 +66,7 @@ const FriendsListPopup = ({onClose}) => {
 
             </div>
         </div>
-    )
-        ;
+    );
 };
 
 export default FriendsListPopup;
