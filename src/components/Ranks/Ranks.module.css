@@ -12,7 +12,7 @@
 }
 
 .rankPop {
-    background: white;
+    background-color: #ffa85f;
     padding: 20px;
     border-radius: 10px;
     position: relative;
@@ -32,6 +32,14 @@
     font-size: 20px;
     cursor: pointer;
 }
+.achievements{
+    position: fixed; /* ✅ Stays at the top */
+    top: 30px;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 60px;
+    font-weight: bold;
+}
 .threeLevels{
     display: flex;
     gap: 20px;
@@ -45,8 +53,6 @@
     height: 80%;
     background-color: #ffc99e;
     border-radius: 20px;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
-    -10px -10px 20px rgba(255, 255, 255, 0.9);
     align-items: center;
     justify-content: center;
     font-size: 20px;

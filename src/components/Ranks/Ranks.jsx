@@ -8,6 +8,7 @@ const Ranks = ({ onClose }) => {
                 <button className={styles.closeButton2} onClick={onClose}>
                     &times;
                 </button>
+                <h1 className={styles.achievements}>Achievements</h1>
 
                 <div className={styles.threeLevels}>
                     <div className={styles.chopped}>
