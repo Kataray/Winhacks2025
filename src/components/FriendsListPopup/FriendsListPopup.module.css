@@ -1,4 +1,4 @@
-.overlay {
+.friendsListOverlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -11,7 +11,7 @@
     z-index: 1000;
 }
 
-.popup {
+.friendsListPopup {
     background: linear-gradient(to bottom right, #ffc99e, #f5b97f);
     font-size: 120%;
     padding: 20px;
@@ -28,19 +28,19 @@
 }
 
 /* Hide scrollbar by default */
-.popup::-webkit-scrollbar {
+.friendsListPopup::-webkit-scrollbar {
     width: 10px;
     display: none; /* Hide scrollbar when not needed */
     border-radius: 10px;
 }
 
 /* Show scrollbar only when there's overflow */
-.popup:hover::-webkit-scrollbar {
+.friendsListPopup:hover::-webkit-scrollbar {
     display: block;
 }
 
 /* Style the scrollbar */
-.popup::-webkit-scrollbar-thumb {
+.friendsListPopup::-webkit-scrollbar-thumb {
     background: linear-gradient(45deg, #ff9f68, #e88b50); /* Gradient color */
     background: #e88b50;
     border-radius: 10px;
@@ -49,14 +49,15 @@
 
 }
 
-.popup::-webkit-scrollbar-track {
+.friendsListPopup::-webkit-scrollbar-track {
     background: #f5b97f;
     border-radius: 10px;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 
 }
 
-.closeButton {
+
+.friendsListCloseButton {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -66,62 +67,6 @@
     cursor: pointer;
 }
 
-.closeButton:hover {
+.friendsListCloseButton:hover {
     color: red;
 }
-
-.flashcardGroupList {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 16px;
-}
-
-.flashcardPack {
-    border-radius: 10px;
-    padding: 4px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
-    text-align: center;
-}
-
-.flashcardSecondaryText {
-    font-size: 12px;
-    color: gray;
-}
-
-.flashcardPackButtons {
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 4px;
-}
-
-.createFlashcardGroup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    width: 60%;
-}
-
-.createFlashcardGroup input {
-    width: 100%;
-}
-
-.flashcardList {
-    display: grid;
-    width: 45%;
-    grid-gap: 16px;
-}
-
-.flashcardMultipleChoice {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    width: 100%;
-}
-
-
-
-
