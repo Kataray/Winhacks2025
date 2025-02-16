@@ -7,12 +7,14 @@ import FlashcardPage from "../Flashcards/FlashcardPage.jsx";
 import ChallengePage from "../Challenges/ChallengePage.jsx";
 import SearchUser from "../ListOfPeople/SearchUser.jsx";
 import {UserContext} from "../../../UserContext.jsx";
+import ToDoListPage from "../ToDoListPage/ToDoListPage.jsx";
 
 const MainPage = () => {
     const [showEditProfilePopup, setShowEditProfilePopup] = useState(false);
     const [showFriendsPopup, setShowFriendsPopup] = useState(false);
-    const [showFlashcardScreen, setShowFlashcardScreen] = useState(false);
     const [showChallengeScreen, setShowChallengeScreen] = useState(false);
+    const [showFlashcardScreen, setShowFlashcardScreen] = useState(false);
+    const [showToDoScreen, setShowToDoScreen] = useState(false);
     const [bio, setBio] = useState("");
     const { user } = useContext(UserContext);
     const [loading, setLoading] = React.useState(true);
@@ -32,7 +34,7 @@ const MainPage = () => {
         <div className={styles.container}>
             <div className={styles.ProfileSection}></div>
             <div className={styles.ChallengeFriendSection} onClick={() => setShowChallengeScreen(true)}></div>
-            <div className={styles.ToDoSection}></div>
+            <div className={styles.ToDoSection} onClick={() => setShowToDoScreen(true)}></div>
             <div className={styles.FlashcardSection} onClick={() => setShowFlashcardScreen(true)}></div>
             <div className={styles.testImage}>
                 <img src="/assets/ChopChopLogo.png" alt="Logo" className={styles.testImage}/>
@@ -76,7 +78,7 @@ const MainPage = () => {
                 Friends
             </div>
             {showFriendsPopup && <FriendsListPopup onClose={() => setShowFriendsPopup(false)} />}
-
+            { showToDoScreen && <ToDoListPage onClose={() => setShowToDoScreen(false)} /> }
             {showFlashcardScreen && <FlashcardPage id="flashcardPopup" onClose={() => setShowFlashcardScreen(false)}/>}
             {showChallengeScreen && <ChallengePage onClose={() => setShowChallengeScreen(false)}/>}
 

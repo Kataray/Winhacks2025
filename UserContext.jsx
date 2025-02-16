@@ -73,6 +73,26 @@ export function UserProvider({ children }) {
             .catch((error) => console.error("Error adding friend:", error));
     }
 
+    const addTask = (tasks, category) => {
+        if (!user) return;
+        const userRef = ref(db, `anonymousUsers/${auth.currentUser.uid}/todoLists`);
+        const existingTasks = user.todoLists?.[category] ?? [];
+        const updatedCategoryTasks = [...existingTasks, ...tasks];
+
+        update(userRef, { [category]: updatedCategoryTasks })
+            .then(() => {
+                setUser(prev => ({
+                    ...prev,
+                    todoLists: {
+                        ...prev.todoLists,
+                        [category]: updatedCategoryTasks
+                    }
+                }));
+                console.log("Task added successfully!");
+            })
+            .catch(error => console.error("Error updating todo list:", error));
+    }
+
     const addFlashcardSet = (setId, setName, setDescription) => {
         if (!user) return;
         const userRef = ref(db, `anonymousUsers/${auth.currentUser.uid}/flashcardSets`);
@@ -122,7 +142,7 @@ export function UserProvider({ children }) {
     };
 
     return (
-        <UserContext.Provider value={{ user, updateUsername, updateBio, updatePoints, addFlashcardSet, addCardToSet, addFriend }}>
+        <UserContext.Provider value={{ user, updateUsername, updateBio, updatePoints, addFlashcardSet, addCardToSet, addFriend, addTask }}>
             {children}
         </UserContext.Provider>
     );

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import styles from "./ToDoListPage.module.css";
-import Tasks from "../tasks/Tasks.jsx";
+import Tasks from "./Tasks.jsx";
+import {UserContext} from "../../../UserContext.jsx";
 
 const MAX_TASKS = 5; // ✅ Set task limit
 
@@ -8,6 +9,19 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
     const [isPopupOpen, setIsPopupOpen] = useState(false); // ✅ Controls popup
     const [currentCategory, setCurrentCategory] = useState(null); // ✅ Track category
     const [localTasks, setLocalTasks] = useState(tasks || { school: [], home: [], misc: [] });
+    const [loading, setLoading] = React.useState(true);
+
+    const { user, addTask } = useContext(UserContext);
+
+    useEffect(() => {
+        if (user !== undefined) {
+            setLoading(false);
+        }
+    }, [user]);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     // ✅ Function to store applied tasks in the correct category
     const handleApplyTasks = (newTasks) => {
@@ -16,6 +30,7 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                 ...prevTasks,
                 [currentCategory]: [...prevTasks[currentCategory], ...newTasks], // ✅ Append tasks
             }));
+            addTask(newTasks, currentCategory);
         }
         setIsPopupOpen(false); // ✅ Close popup
     };
@@ -50,45 +65,43 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
 
     // ✅ Final Apply Button - Saves All Tasks and Goes Back to Main Page
     const handleFinalApply = () => {
-        onFinalApply(localTasks); // ✅ Send updated tasks to `MainPage.jsx`
+        onFinalApply(user.todoLists); // ✅ Send updated tasks to `MainPage.jsx`
     };
 
     return (
-        <div className={styles.layout} onClick={onClose}>
+        <div className={styles.toDoLayout} onClick={onClose}>
             <div className={styles.ToDoList} onClick={(e) => e.stopPropagation()}>
-                <button className={styles.comeUp} onClick={onClose}>
+                <button className={styles.toDoComeUp} onClick={onClose}>
                     &times;
                 </button>
 
                 {/* ✅ Section Bars Wrapper */}
-                <div className={styles.sections}>
+                <div className={styles.toDoSections}>
                     {/* 🔹 School Tasks */}
-                    <div className={styles.schoolSectionBar}>
+                    <div className={styles.toDoSchoolSectionBar}>
                         <h3>School</h3>
                         <button
-                            className={styles.addButton}
+                            className={styles.toDoAddButton}
                             onClick={() => {
                                 setCurrentCategory("school");
                                 setIsPopupOpen(true);
                             }}
-                            disabled={localTasks.school.length >= MAX_TASKS} // ✅ Disable if full
                         >
                             Add Task
                         </button>
-                        <ul className={styles.taskList}>
-                            {localTasks.school.map((task, index) => (
-                                <li key={index} className={styles.taskItem}>
+                        <ul className={styles.toDoTaskList}>
+                            {user.todoLists.school.map((task, index) => (
+                                <li key={index} className={styles.toDoTaskItem}>
                                     {task}
-                                    {/* ❌ This is incorrect because `category` is not defined */}
-                                    <button className={styles.moveUpButton}
+                                    <button className={styles.toDoMoveUpButton}
                                             onClick={() => handleMoveUp("school", index)}>▲
                                     </button>
 
-                                    <button className={styles.moveDownButton}
+                                    <button className={styles.toDoMoveDownButton}
                                             onClick={() => handleMoveDown("school", index)}>▼
                                     </button>
 
-                                    <button className={styles.deleteButton}
+                                    <button className={styles.toDoDeleteButton}
                                             onClick={() => handleDeleteTask("school", index)}>❌
                                     </button>
                                 </li>
@@ -97,33 +110,32 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                     </div>
 
                     {/* 🔹 Home Tasks */}
-                    <div className={styles.homeSectionBar}>
+                    <div className={styles.toDoHomeSectionBar}>
                         <h3>Home</h3>
                         <button
-                            className={styles.addButton}
+                            className={styles.toDoAddButton}
                             onClick={() => {
                                 setCurrentCategory("home");
                                 setIsPopupOpen(true);
                             }}
-                            disabled={localTasks.home.length >= MAX_TASKS} // ✅ Disable if full
                         >
                             Add Task
                         </button>
-                        <ul className={styles.taskList}>
-                            {localTasks.home.map((task, index) => (
-                                <li key={index} className={styles.taskItem}>
+                        <ul className={styles.toDoTaskList}>
+                            {user.todoLists.home.map((task, index) => (
+                                <li key={index} className={styles.toDoTaskItem}>
                                     {task}
 
                                     {/* ✅ Corrected buttons */}
-                                    <button className={styles.moveUpButton}
+                                    <button className={styles.toDoMoveUpButton}
                                             onClick={() => handleMoveUp("home", index)}>▲
                                     </button>
 
-                                    <button className={styles.moveDownButton}
+                                    <button className={styles.toDoMoveDownButton}
                                             onClick={() => handleMoveDown("home", index)}>▼
                                     </button>
 
-                                    <button className={styles.deleteButton}
+                                    <button className={styles.toDoDeleteButton}
                                             onClick={() => handleDeleteTask("home", index)}>❌
                                     </button>
                                 </li>
@@ -132,33 +144,32 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                     </div>
 
                     {/* 🔹 Misc Tasks */}
-                    <div className={styles.miscSectionBar}>
+                    <div className={styles.toDoMiscSectionBar}>
                         <h3>Misc</h3>
                         <button
-                            className={styles.addButton}
+                            className={styles.toDoAddButton}
                             onClick={() => {
                                 setCurrentCategory("misc");
                                 setIsPopupOpen(true);
                             }}
-                            disabled={localTasks.misc.length >= MAX_TASKS} // ✅ Disable if full
                         >
                             Add Task
                         </button>
-                        <ul className={styles.taskList}>
-                            {localTasks.misc.map((task, index) => (
-                                <li key={index} className={styles.taskItem}>
+                        <ul className={styles.toDoTaskList}>
+                            {user.todoLists.misc.map((task, index) => (
+                                <li key={index} className={styles.toDoTaskItem}>
                                     {task}
 
                                     {/* ✅ Corrected buttons */}
-                                    <button className={styles.moveUpButton}
+                                    <button className={styles.toDoMoveUpButton}
                                             onClick={() => handleMoveUp("misc", index)}>▲
                                     </button>
 
-                                    <button className={styles.moveDownButton}
+                                    <button className={styles.toDoMoveDownButton}
                                             onClick={() => handleMoveDown("misc", index)}>▼
                                     </button>
 
-                                    <button className={styles.deleteButton}
+                                    <button className={styles.toDoDeleteButton}
                                             onClick={() => handleDeleteTask("misc", index)}>❌
                                     </button>
                                 </li>
@@ -177,7 +188,7 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                 )}
 
                 {/* ✅ Final Apply Button - Saves Tasks & Returns to Main Page */}
-                <button className={styles.applyButton} onClick={handleFinalApply}>
+                <button className={styles.toDoApplyButton} onClick={handleFinalApply}>
                     Apply
                 </button>
             </div>

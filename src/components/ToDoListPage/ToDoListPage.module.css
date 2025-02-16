@@ -1,5 +1,5 @@
 /* ✅ Background Overlay */
-.layout {
+.toDoLayout {
     position: fixed;
     top: 0;
     left: 0;
@@ -25,7 +25,7 @@
 }
 
 /* ✅ Close Button */
-.comeUp {
+.toDoComeUp {
     position: absolute;
     top: 10px;
     right: 15px;
@@ -36,7 +36,7 @@
 }
 
 /* ✅ Parent Flexbox Container */
-.sections {
+.toDoSections {
     display: flex; /* Arrange items in a row */ /* Center the items */
     gap: 30px; /* Adds space between each section */
     margin-top: 30px;
@@ -44,9 +44,9 @@
 }
 
 /* ✅ Individual Cards */
-.schoolSectionBar,
-.homeSectionBar,
-.miscSectionBar {
+.toDoSchoolSectionBar,
+.toDoHomeSectionBar,
+.toDoMiscSectionBar {
     width: 50%; /* Adjust width */
     height: 500px; /* Adjust height */
     background-color: #ffffff;
@@ -63,7 +63,7 @@
     transition: all 0.3s ease;
 }
 
-.addButton{
+.toDoAddButton{
     width: auto;
     min-width: fit-content;
     white-space: nowrap;
@@ -83,24 +83,24 @@
 
 
 /* ✅ Hover Effect */
-.schoolSectionBar:hover{
+.toDoSchoolSectionBar:hover{
     transform: translateY(-2px);
 }
-.homeSectionBar:hover{
+.toDoHomeSectionBar:hover{
     transform: translateY(2px);
 }
-.miscSectionBar:hover {
+.toDoMiscSectionBar:hover {
     transform: translateY(-2px);
 }
 
-.taskList {
+.toDoTaskList {
     list-style: none;
     justify-content: center;
     text-align: center;
     margin-top: 10px;
 }
 
-.taskItem{
+.toDoTaskItem{
     border-radius: 20px; /* Ajust the spacing as needed */
     background-color: #d8732d;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
@@ -120,7 +120,7 @@
     color: black;
 
 }
-.applyButton{
+.toDoApplyButton{
     margin-top: 20px;
     width: 30%;
     height: 50px;
@@ -136,7 +136,7 @@
     transition: all 0.3s ease;
 }
 
-.deleteButton {
+.toDoDeleteButton {
     margin-left: auto;
     background-color: #f67777;
     color: white;
@@ -146,7 +146,7 @@
     border:none;
 }
 
-.moveUpButton {
+.toDoMoveUpButton {
     margin-left :10px;
     background-color: #aaa7a7;
     color: white;
@@ -155,7 +155,7 @@
     padding: 5px 8px;
     border: none;
 }
-.moveDownButton{
+.toDoMoveDownButton{
     margin-left : auto;
     background-color: #aaa7a7;
     color: white;
@@ -166,10 +166,10 @@
 
 }
 
-.deleteButton:hover {
+.toDoDeleteButton:hover {
     background-color: darkred;
 }
 
-.moveButton:hover {
+.toDoMoveButton:hover {
     background-color: darkgray;
 }

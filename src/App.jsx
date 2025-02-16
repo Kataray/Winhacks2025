@@ -70,7 +70,7 @@ function App() {
                                     }
                                 ]
                             }],
-                            todoLists: [{placeholder: true}],
+                            todoLists: { school: ["Example Task"], home: ["Example Task"], misc: ["Example Task"] },
                             challenges: [{placeholder: true}],
                             achievements: [{placeholder: true}],
                             friends: [{placeholder: true}],
