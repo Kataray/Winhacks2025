@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect, useContext} from "react";
 import styles from "./ChallengePage.module.css";
+import {UserContext} from "../../../UserContext.jsx";
 
 const flashcardSets = {
     Java: [
@@ -9,41 +10,19 @@ const flashcardSets = {
     ],
     Science: [
         { question: "Water boils at 100°C at sea level.", answer: "True" },
-        { question: "Humans have 5 lungs.", answer: "False" },
-        { question: "The Earth is flat.", answer: "False" }
+        { question: "Humans have two lungs.", answer: "True" },
+        { question: "The Sun orbits around the Earth.", answer: "False" }
     ],
     Math: [
-        { question: "Water boils at 100°C at sea level.", answer: "True" },
-        { question: "Humans have 5 lungs.", answer: "False" },
-        { question: "The Earth is flat.", answer: "False" }
-    ],
-    Arabic: [
-        { question: "Water boils at 100°C at sea level.", answer: "True" },
-        { question: "Humans have 5 lungs.", answer: "False" },
-        { question: "The Earth is flat.", answer: "False" }
-    ],
-    Spanish: [
-        { question: "Water boils at 100°C at sea level.", answer: "True" },
-        { question: "Humans have 5 lungs.", answer: "False" },
-        { question: "The Earth is flat.", answer: "False" }
-    ],
-    French: [
-        { question: "Water boils at 100°C at sea level.", answer: "True" },
-        { question: "Humans have 5 lungs.", answer: "False" },
-        { question: "The Earth is flat.", answer: "False" }
-    ],
-    Art: [
-        { question: "Water boils at 100°C at sea level.", answer: "True" },
-        { question: "Humans have 5 lungs.", answer: "False" },
-        { question: "The Earth is flat.", answer: "False" }
-    ],
+        { question: "The sum of the angles in a triangle is 180°.", answer: "True" },
+        { question: "A prime number has exactly two factors.", answer: "True" },
+        { question: "5 × 5 = 20.", answer: "False" }
+    ]
 };
 
 const ChallengePage = ({ onClose }) => {
-    const friendsList = ["Lara", "Katie", "Aditya", "Yasmeen", "Emma"];
-    const [selectedFriend, setSelectedFriend] = useState(null);
     const [requestSent, setRequestSent] = useState(false);
-    const [showFlashcardSets, setShowFlashcardSets] = useState(false);
+    const [showFlashcardSets, setShowFlashcardSets] = useState(true);
     const [selectedSet, setSelectedSet] = useState(null);
     const [quizStarted, setQuizStarted] = useState(false);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -53,7 +32,7 @@ const ChallengePage = ({ onClose }) => {
     const [showCorrectNotification, setShowCorrectNotification] = useState(false);
     const [showWrongNotification, setShowWrongNotification] = useState(false); // New state for wrong answer
 
-
+    const {addPoints} = useContext(UserContext);
     useEffect(() => {
         let interval;
         if (quizStarted) {
@@ -61,16 +40,6 @@ const ChallengePage = ({ onClose }) => {
         }
         return () => clearInterval(interval);
     }, [quizStarted]);
-
-    const handleChallenge = (friend) => {
-        setSelectedFriend(friend);
-        setRequestSent(true);
-
-        setTimeout(() => {
-            setRequestSent(false);
-            setShowFlashcardSets(true);
-        }, 2000);
-    };
 
     const handleSetSelection = (setName) => {
         setSelectedSet(setName);
@@ -85,7 +54,7 @@ const ChallengePage = ({ onClose }) => {
         const correctAnswer = currentQuestion.answer;
 
         if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
-            setScore((prevScore) => prevScore + 1);
+            setScore(score + 1);
             setShowCorrectNotification(true);
         } else {
             setShowWrongNotification(true);
@@ -98,6 +67,8 @@ const ChallengePage = ({ onClose }) => {
             } else {
                 setQuizCompleted(true);
                 setQuizStarted(false);
+                console.log("Points added: " + score);
+                addPoints(score + 1);
             }
 
             setShowCorrectNotification(false);
@@ -206,26 +177,9 @@ const ChallengePage = ({ onClose }) => {
                     </div>
                 )}
 
-
-
-                {!requestSent && !showFlashcardSets && !selectedSet && (
+                {showFlashcardSets && !selectedSet && (
                     <>
-                        <h1><em>Nudge a Friend to Challenge Them!</em></h1>
-                        <div className={styles.challengeFriendList}>
-                            {friendsList.map((friend, index) => (
-                                <button key={index} onClick={() => handleChallenge(friend)} className={styles.challengeFriendItem}>
-                                    {friend}
-                                </button>
-                            ))}
-                        </div>
-                    </>
-                )}
-
-                {requestSent && <h1 className={styles.requestMessage}>Request Sent!</h1>}
-
-                {showFlashcardSets && !selectedSet && !requestSent && (
-                    <>
-                        <h1><em>Select a Flashcard Set</em></h1>
+                        <h1><em>Select a Quiz Set</em></h1>
                         <div className={styles.challengeFlashcardList}>
                             {Object.keys(flashcardSets).map((setName, index) => (
                                 <button key={index} className={styles.challengeFlashcardItem} onClick={() => handleSetSelection(setName)}>

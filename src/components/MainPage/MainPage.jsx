@@ -43,7 +43,6 @@ const MainPage = () => {
     const [showChallengeScreen, setShowChallengeScreen] = useState(false);
     const [showFlashcardScreen, setShowFlashcardScreen] = useState(false);
     const [showToDoScreen, setShowToDoScreen] = useState(false);
-    const [bio, setBio] = useState("");
     const { user } = useContext(UserContext);
     const [loading, setLoading] = React.useState(true);
 
