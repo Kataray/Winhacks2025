@@ -1,0 +1,175 @@
+/* ✅ Background Overlay */
+.toDoLayout {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* ✅ Popup Container */
+.ToDoList {
+    background-color: white;
+    height: 90%;
+    width: 80%;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+}
+
+/* ✅ Close Button */
+.toDoComeUp {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* ✅ Parent Flexbox Container */
+.toDoSections {
+    display: flex; /* Arrange items in a row */ /* Center the items */
+    gap: 30px; /* Adds space between each section */
+    margin-top: 30px;
+    justify-content: center;
+}
+
+/* ✅ Individual Cards */
+.toDoSchoolSectionBar,
+.toDoHomeSectionBar,
+.toDoMiscSectionBar {
+    width: 50%; /* Adjust width */
+    height: 500px; /* Adjust height */
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
+    -10px -10px 20px rgba(255, 255, 255, 0.9);
+    /* Use flex to center text */
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.toDoAddButton{
+    width: auto;
+    min-width: fit-content;
+    white-space: nowrap;
+    height: 50px;
+    border-radius: 20px;
+    margin-top: 20px; /* Ajust the spacing as needed */
+    padding: 10px 20px;
+    background-color: #d8732d;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
+    -10px -10px 20px rgba(255, 255, 255, 0.9); /* Softer dark shadow */
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+
+/* ✅ Hover Effect */
+.toDoSchoolSectionBar:hover{
+    transform: translateY(-2px);
+}
+.toDoHomeSectionBar:hover{
+    transform: translateY(2px);
+}
+.toDoMiscSectionBar:hover {
+    transform: translateY(-2px);
+}
+
+.toDoTaskList {
+    list-style: none;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.toDoTaskItem{
+    border-radius: 20px; /* Ajust the spacing as needed */
+    background-color: #d8732d;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
+    -10px -10px 20px rgba(255, 255, 255, 0.9); /* Softer dark shadow */
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    width: fit-content;
+    display: flex;
+    height: 50px;
+    margin-top: 20px;
+    margin-left: 60px;/* Ajust the spacing as needed */
+    padding: 10px 20px; /* Softer dark shadow */
+    color: black;
+
+}
+.toDoApplyButton{
+    margin-top: 20px;
+    width: 30%;
+    height: 50px;
+    border-radius: 20px; /* Ajust the spacing as needed */
+    padding: 10px 20px;
+    background-color: #a53030;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
+    -10px -10px 20px rgba(255, 255, 255, 0.9); /* Softer dark shadow */
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.toDoDeleteButton {
+    margin-left: auto;
+    background-color: #f67777;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px 8px;
+    border:none;
+}
+
+.toDoMoveUpButton {
+    margin-left :10px;
+    background-color: #aaa7a7;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px 8px;
+    border: none;
+}
+.toDoMoveDownButton{
+    margin-left : auto;
+    background-color: #aaa7a7;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px 8px;
+    border: none;
+
+}
+
+.toDoDeleteButton:hover {
+    background-color: darkred;
+}
+
+.toDoMoveButton:hover {
+    background-color: darkgray;
+}
