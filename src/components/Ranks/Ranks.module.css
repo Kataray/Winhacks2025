@@ -39,6 +39,8 @@
     padding: 15px 0;
     font-size: 60px;
     font-weight: bold;
+    color: white;
+    font-family: "Ariel", sans-serif;
 }
 .threeLevels{
     display: flex;
@@ -52,14 +54,17 @@
     width: auto;
     height: 80%;
     background-color: #ffc99e;
-    border-radius: 20px;
     align-items: center;
     justify-content: center;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
     padding-top: 20px;
-    transition: all 0.3s ease;
+    border: none;
+    border-radius: 15px;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+    transition: background-color 0.3s ease;
 }
 .choppedImage{
     width:350px;
@@ -78,19 +83,28 @@
     font-size: 25px;
     justify-content: center;
     align-items: center;
+    color: #f89464;
+    font-family: "Ariel", sans-serif;
+
 
 }
 .pointRank{
     display: flex;
-    font-size: 16px;
+    font-size: 20px;
     justify-content: center;
     align-items: center;
+    color: #f89464;
+    font-family: "Ariel", sans-serif;
+
 }
 .lockLevel{
     display: flex;
-    font-size: 18px;
+    font-size: 20px;
     justify-content: center;
     align-items: center;
+    color: #f89464;
+    font-family: "Ariel", sans-serif;
+
 }
 .chopped:hover{
     transform: translateY(-2px);

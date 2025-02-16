@@ -15,7 +15,7 @@ const Ranks = ({ onClose }) => {
                         <img src="/assets/chopped.png" alt="ChoppedLevel" className={styles.choppedImage}/>
                         <h1 className={styles.TitleRank}>Chopped</h1>
                         <p className={styles.lockLevel}>Unlocked</p>
-                        <p className={styles.pointRank}>done</p>
+                        <p className={styles.pointRank}>Done</p>
                     </div>
                     <div className={styles.NLEchoppa}>
                         <img src="/assets/NLEchoppa.png" alt="NLEchoppaLevel" className={styles.NLEchoppaImage}/>
