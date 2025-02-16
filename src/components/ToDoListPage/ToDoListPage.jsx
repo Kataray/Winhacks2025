@@ -3,11 +3,13 @@ import styles from "./ToDoListPage.module.css";
 import Tasks from "./Tasks.jsx";
 import {UserContext} from "../../../UserContext.jsx";
 
-const MAX_TASKS = 5; // ✅ Set task limit
+const MAX_TASKS = 3;
 
 const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
-    const [isPopupOpen, setIsPopupOpen] = useState(false); // ✅ Controls popup
-    const [currentCategory, setCurrentCategory] = useState(null); // ✅ Track category
+
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [taskCounter, setTaskCounter] = useState(0);
+    const [currentCategory, setCurrentCategory] = useState(null);
     const [localTasks, setLocalTasks] = useState(tasks || { school: [], home: [], misc: [] });
     const [loading, setLoading] = React.useState(true);
 
@@ -23,47 +25,57 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
         return <div>Loading...</div>;
     }
 
-    // ✅ Function to store applied tasks in the correct category
+
     const handleApplyTasks = (newTasks) => {
+
         if (currentCategory && newTasks.length > 0) {
+
             setLocalTasks((prevTasks) => ({
+
                 ...prevTasks,
-                [currentCategory]: [...prevTasks[currentCategory], ...newTasks], // ✅ Append tasks
+                [currentCategory]: [...prevTasks[currentCategory], ...newTasks],
             }));
+
             addTask(newTasks, currentCategory);
         }
-        setIsPopupOpen(false); // ✅ Close popup
+        setIsPopupOpen(false);
     };
 
     const handleDeleteTask = (category, index) => {
+
         setLocalTasks((prevTasks) => {
+
             const updatedTasks = [...prevTasks[category]];
-            updatedTasks.splice(index, 1); // ✅ Remove task
+            updatedTasks.splice(index, 1);
             return { ...prevTasks, [category]: updatedTasks };
         });
     };
 
-    // ✅ Function to move a task up
+
     const handleMoveUp = (category, index) => {
+
         setLocalTasks((prevTasks) => {
-            if (index === 0) return prevTasks; // ✅ Prevent moving the first task up
+
+            if (index === 0) return prevTasks;
             const updatedTasks = [...prevTasks[category]];
-            [updatedTasks[index], updatedTasks[index - 1]] = [updatedTasks[index - 1], updatedTasks[index]]; // ✅ Swap
+            [updatedTasks[index], updatedTasks[index - 1]] = [updatedTasks[index - 1], updatedTasks[index]];
             return { ...prevTasks, [category]: updatedTasks };
         });
     };
 
-    // ✅ Function to move a task down
+
     const handleMoveDown = (category, index) => {
+
         setLocalTasks((prevTasks) => {
-            if (index === prevTasks[category].length - 1) return prevTasks; // ✅ Prevent moving the last task down
+
+            if (index === prevTasks[category].length - 1) return prevTasks;
             const updatedTasks = [...prevTasks[category]];
-            [updatedTasks[index], updatedTasks[index + 1]] = [updatedTasks[index + 1], updatedTasks[index]]; // ✅ Swap
+            [updatedTasks[index], updatedTasks[index + 1]] = [updatedTasks[index + 1], updatedTasks[index]];
             return { ...prevTasks, [category]: updatedTasks };
         });
     };
 
-    // ✅ Final Apply Button - Saves All Tasks and Goes Back to Main Page
+
     const handleFinalApply = () => {
         onFinalApply(user.todoLists); // ✅ Send updated tasks to `MainPage.jsx`
     };
@@ -75,9 +87,8 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                     &times;
                 </button>
 
-                {/* ✅ Section Bars Wrapper */}
                 <div className={styles.toDoSections}>
-                    {/* 🔹 School Tasks */}
+
                     <div className={styles.toDoSchoolSectionBar}>
                         <h3>School</h3>
                         <button
@@ -86,11 +97,16 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                                 setCurrentCategory("school");
                                 setIsPopupOpen(true);
                             }}
+
+                            disabled={localTasks.school.length >= MAX_TASKS}
+
                         >
                             Add Task
                         </button>
                         <ul className={styles.toDoTaskList}>
+
                             {user.todoLists.school.map((task, index) => (
+
                                 <li key={index} className={styles.toDoTaskItem}>
                                     {task}
                                     <button className={styles.toDoMoveUpButton}
@@ -109,7 +125,6 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                         </ul>
                     </div>
 
-                    {/* 🔹 Home Tasks */}
                     <div className={styles.toDoHomeSectionBar}>
                         <h3>Home</h3>
                         <button
@@ -118,10 +133,12 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                                 setCurrentCategory("home");
                                 setIsPopupOpen(true);
                             }}
+                            disabled={localTasks.home.length >= MAX_TASKS}
                         >
                             Add Task
                         </button>
                         <ul className={styles.toDoTaskList}>
+
                             {user.todoLists.home.map((task, index) => (
                                 <li key={index} className={styles.toDoTaskItem}>
                                     {task}
@@ -143,7 +160,6 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                         </ul>
                     </div>
 
-                    {/* 🔹 Misc Tasks */}
                     <div className={styles.toDoMiscSectionBar}>
                         <h3>Misc</h3>
                         <button
@@ -152,6 +168,8 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                                 setCurrentCategory("misc");
                                 setIsPopupOpen(true);
                             }}
+                            disabled={localTasks.misc.length >= MAX_TASKS}
+
                         >
                             Add Task
                         </button>
@@ -178,18 +196,17 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                     </div>
                 </div>
 
-                {/* ✅ Open Popup When a Section is Selected */}
                 {isPopupOpen && (
                     <Tasks
                         onApply={handleApplyTasks}
                         onClose={() => setIsPopupOpen(false)}
-                        existingTasks={localTasks[currentCategory]} // ✅ Pass existing tasks
+                        existingTasks={localTasks[currentCategory]}
                     />
                 )}
 
-                {/* ✅ Final Apply Button - Saves Tasks & Returns to Main Page */}
+
                 <button className={styles.toDoApplyButton} onClick={handleFinalApply}>
-                    Apply
+                    Save
                 </button>
             </div>
         </div>

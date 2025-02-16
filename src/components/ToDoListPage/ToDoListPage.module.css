@@ -10,18 +10,20 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
+
 }
 
 /* ✅ Popup Container */
 .ToDoList {
-    background-color: white;
-    height: 90%;
-    width: 80%;
+    height: 100%;
+    width: 90%;
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
     position: relative;
+    background:  #ffd4b1;
+
 }
 
 /* ✅ Close Button */
@@ -34,9 +36,28 @@
     font-size: 20px;
     cursor: pointer;
 }
+.toDoTitleBar{
+    display:flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 14px;
+    font-family: "Carter One", sans-serif;
+    font-size: 40px;
+    font-style: italic;
+    font-variant: all-small-caps;
+    font-weight: 700;
+    line-height: 26px;
+    color: beige;
+}
+
 
 /* ✅ Parent Flexbox Container */
 .toDoSections {
+
+    font-family: "Carter One", sans-serif;
+    margin-bottom: 10px;
+    color: white;
     display: flex; /* Arrange items in a row */ /* Center the items */
     gap: 30px; /* Adds space between each section */
     margin-top: 30px;
@@ -49,37 +70,56 @@
 .toDoMiscSectionBar {
     width: 50%; /* Adjust width */
     height: 500px; /* Adjust height */
-    background-color: #ffffff;
+    background:  #ffe6d0;
     border-radius: 20px;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
-    -10px -10px 20px rgba(255, 255, 255, 0.9);
+    outline: none;
+    border:none;
     /* Use flex to center text */
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
     text-align: center;
     padding-top: 20px;
     transition: all 0.3s ease;
+    margin-top: 30px;
+
 }
 
 .toDoAddButton{
+    color: beige;
+
+    padding: 20px 30px;
+    margin-bottom: 5px;
+    border-radius: 10px;
     width: auto;
     min-width: fit-content;
     white-space: nowrap;
     height: 50px;
-    border-radius: 20px;
+    outline: none;
+    border:none;
     margin-top: 20px; /* Ajust the spacing as needed */
-    padding: 10px 20px;
-    background-color: #d8732d;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
-    -10px -10px 20px rgba(255, 255, 255, 0.9); /* Softer dark shadow */
+    background-color: #ff9f68;
+    /* Softer dark shadow */
     cursor: pointer;
-    border: none;
     font-size: 18px;
     font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds subtle depth */
 
 }
+.toDoAddButton:hover{
+    background: linear-gradient(45deg, #ff6b42,#e88b50);
+    animation: shake 0.3s ease-in-out;
+
+}
+
+.toDoAddButton:active{
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+}
+
 
 
 /* ✅ Hover Effect */
@@ -94,51 +134,83 @@
 }
 
 .toDoTaskList {
+    margin-bottom: 30px;
     list-style: none;
     justify-content: center;
     text-align: center;
     margin-top: 10px;
+    border:none;
+
 }
 
 .toDoTaskItem{
     border-radius: 20px; /* Ajust the spacing as needed */
-    background-color: #d8732d;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
-    -10px -10px 20px rgba(255, 255, 255, 0.9); /* Softer dark shadow */
+    background: linear-gradient(35deg, #ffba88, #ff9052);
+    font-family: "Carter One", sans-serif;
+
+    /* Softer dark shadow */
     cursor: pointer;
+    display: flex;
     align-items: center;
     justify-content: center;
     font-size: 20px;
     text-align: center;
     transition: all 0.3s ease;
-    width: fit-content;
-    display: flex;
-    height: 50px;
-    margin-top: 20px;
-    margin-left: 60px;/* Ajust the spacing as needed */
+    width: 80%;
+    height: 70px;
+    margin: 20px auto;/* Ajust the spacing as needed */
     padding: 10px 20px; /* Softer dark shadow */
-    color: black;
+    outline: none;
+    border:none;
 
 }
 .toDoApplyButton{
     margin-top: 20px;
     width: 30%;
-    height: 50px;
-    border-radius: 20px; /* Ajust the spacing as needed */
-    padding: 10px 20px;
-    background-color: #a53030;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
-    -10px -10px 20px rgba(255, 255, 255, 0.9); /* Softer dark shadow */
+    font-family: "Carter One", sans-serif;
+    height:75px;
+    border-radius: 12px; /* Ajust the spacing as needed */
+    padding: 20px 30px;
+    background-color: #ff9f68;
+    color: white;
     cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 25px;
     text-align: center;
     transition: all 0.3s ease;
+    outline: none;
+    border:none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds subtle depth */
+
+}
+.toDoApplyButton:active{
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.toDoDeleteButton {
-    margin-left: auto;
-    background-color: #f67777;
+.toDoApplyButton:hover{
+    background: linear-gradient(45deg, #ff6b42,#e88b50);
+    animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-4px); }
+    100% { transform: translateX(0); }
+}/* ✅ Button Container */
+.toDoButtonContainer {
+    display: inline-flex; /* Use flexbox to arrange buttons */
+    gap: 5px; /* Space between buttons */
+    justify-content: normal; /* Center the buttons horizontally */
+    margin-top: 20px; /* Adds some space from the content above */
+    align-items: center; /* Vertically center the buttons */
+}
+
+
+/* ✅ Individual Buttons */
+.toDoDeleteButton{
+    background: linear-gradient(145deg, #ffb3b3, #ff6666); /* Soft pink to light red gradient for delete */
     color: white;
     border-radius: 10px;
     cursor: pointer;
@@ -146,30 +218,46 @@
     border:none;
 }
 
-.toDoMoveUpButton {
-    margin-left :10px;
-    background-color: #aaa7a7;
+.toDoMoveUpButton{
+    margin-left :60px;
+    background: linear-gradient(145deg, #ffcb8f, #ffb84d); /* Soft peach to soft yellow gradient */
     color: white;
     border-radius: 10px;
     cursor: pointer;
     padding: 5px 8px;
     border: none;
 }
-.toDoMoveDownButton{
-    margin-left : auto;
-    background-color: #aaa7a7;
+.toDoMoveDownButton {
+    background: linear-gradient(to right, #ffc99d, #ff9a8b, #ff6f91);
     color: white;
     border-radius: 10px;
     cursor: pointer;
     padding: 5px 8px;
-    border: none;
+    border: none; /* Soft shadow for depth */
+    }
 
-}
+    /* ✅ Hover Effects */
+    .toDoDeleteButton:hover {
+        background: linear-gradient(145deg, #ff6666, #ffb3b3); /* Reverse soft red gradient */
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
 
-.toDoDeleteButton:hover {
-    background-color: darkred;
-}
 
-.toDoMoveButton:hover {
-    background-color: darkgray;
-}
+    .toDoMoveUpButton:hover {
+        background: linear-gradient(145deg, #ffb84d, #ffcb8f); /* Reverse peach to yellow gradient */
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .toDoMoveDownButton:hover {
+        background: linear-gradient(145deg, #ff9966, #ffc99d); /* Sunset glow */
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ✅ Active (Pressed) Effect */
+    .toDoDeleteButton:active, .toDoMoveUpButton:active, .toDoMoveDownButton:active {
+        transform: scale(0.95); /* Shrink slightly */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Softer shadow */
+    }

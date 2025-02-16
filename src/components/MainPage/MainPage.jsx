@@ -8,6 +8,7 @@ import SearchUser from "../ListOfPeople/SearchUser.jsx";
 import {UserContext} from "../../../UserContext.jsx";
 import ToDoListPage from "../ToDoListPage/ToDoListPage.jsx";
 import InformationPopup from "../InformationPopup/InformationPopup.jsx";
+import Ranks from "../Ranks/Ranks.jsx";
 
 const MainPage = () => {
     const [showEditProfilePopup, setShowEditProfilePopup] = useState(false);
@@ -61,6 +62,7 @@ const MainPage = () => {
     return (
         <div className={styles.container}>
             <div className={styles.ProfileSection}></div>
+
             <div className={styles.ChallengeFriendSection} onClick={() => setShowChallengeScreen(true)}>
                 <p className={styles.ChallengesText}>Challenges and Leaderboard</p>
                 <p className={styles.smallText}>Compete with your friends for the top speed!</p>
@@ -88,6 +90,21 @@ const MainPage = () => {
                 <img src="/assets/ProfileBgEmpty.png" alt="CircleBg" className={styles.whiteCircleBg}/>
             </div>
 
+            </div>
+
+            {/* ✅ Open ToDoListPage and pass tasks */}
+            {showToDo && (
+                <ToDoListPage
+                    onClose={() => setShowToDo(false)}
+                    tasks={tasks}
+                    onFinalApply={handleApplyAllTasks} // ✅ Pass function to save tasks
+                />
+            )}
+            {ranks && (
+                <Ranks
+                    onClose={() => setRanks(false)}
+                />
+            )}
             <div className={styles.acheivmentsBox}>Achievements</div>
             <div className={styles.pointsBox}>Total Points: {user?.points}</div>
             <div className={styles.rankBox} onClick={() => setShowInformationPopup(true)}>
@@ -167,7 +184,6 @@ const MainPage = () => {
 
 
             <div className={styles.NameDisplay}>{user?.username}</div>
-
         </div>
     );
 };
