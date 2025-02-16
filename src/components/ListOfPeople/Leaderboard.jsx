@@ -43,20 +43,35 @@ const UserTable = () => {
             <Table>
                 <TableHead>
                     <TableRow>
+                        <TableCell>Place</TableCell>
                         <TableCell>Rank</TableCell>
                         <TableCell>Name</TableCell>
                         <TableCell>Points</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {users.map((user) => (
+                    {users.map((user, index) => (
                         <TableRow key={user.id}>
+                            {
+                                <>
+                                    {
+                                        index === 0 && <TableCell style={{"color": "orange", "fontSize": "25px", "fontWeight": "bold"}}>#{index + 1}</TableCell>
+                                    }
+                                    {
+                                        index === 1 && <TableCell style={{"color": "orangered", "fontSize": "20px", "fontWeight": "bold"}}>#{index + 1}</TableCell>
+                                    }
+                                    {
+                                        index === 2 && <TableCell style={{"color": "bronze", "fontSize": "15px", "fontWeight": "bold"}}>#{index + 1}</TableCell>
+                                    }
+                                    { index > 2 && <TableCell>#{index + 1}</TableCell>}
+                                </>
+                            }
                             <TableCell>
                                 {
                                     <>
-                                        { user.points < 25 && <img src="/assets/chopped.png" alt="Chopped Chin" style={{"width": "64px"}}/> }
-                                        { user.points > 24 && user.points < 60 && <img src="/assets/NLEchoppa.png" alt="NLE Choppa" style={{"width": "64px"}}/> }
-                                        { user.points > 59 && <img src="/assets/choptimusPrime.png" alt="Choptimus Prime" style={{"width": "64px"}}/> }
+                                        { user.points < 25 && <img src={"/assets/chopped.png"} width={"48px"} /> }
+                                        { user.points > 24 && user.points < 61 && <img src={"/assets/NLEchoppa.png"} width={"48px"} /> }
+                                        { user.points > 60 && <img src={"/assets/choptimusPrime.png"} width={"48px"} /> }
                                     </>
                                 }
                             </TableCell>
