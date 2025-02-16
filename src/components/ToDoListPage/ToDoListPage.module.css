@@ -54,7 +54,6 @@
 
 /* ✅ Parent Flexbox Container */
 .toDoSections {
-
     font-family: "Carter One", sans-serif;
     margin-bottom: 10px;
     color: white;
@@ -185,6 +184,7 @@
 .toDoApplyButton:active{
     transform: scale(0.95);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
 }
 
 .toDoApplyButton:hover{
@@ -217,7 +217,6 @@
     padding: 5px 8px;
     border:none;
 }
-
 .toDoMoveUpButton{
     margin-left :60px;
     background: linear-gradient(145deg, #ffcb8f, #ffb84d); /* Soft peach to soft yellow gradient */
@@ -234,30 +233,29 @@
     cursor: pointer;
     padding: 5px 8px;
     border: none; /* Soft shadow for depth */
-    }
+}
 
-    /* ✅ Hover Effects */
-    .toDoDeleteButton:hover {
-        background: linear-gradient(145deg, #ff6666, #ffb3b3); /* Reverse soft red gradient */
-        transform: translateY(-5px);
-        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-    }
+/* ✅ Hover Effects */
+.toDoDeleteButton:hover {
+    background: linear-gradient(145deg, #ff6666, #ffb3b3); /* Reverse soft red gradient */
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
 
+.toDoMoveUpButton:hover {
+    background: linear-gradient(145deg, #ffb84d, #ffcb8f); /* Reverse peach to yellow gradient */
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
 
-    .toDoMoveUpButton:hover {
-        background: linear-gradient(145deg, #ffb84d, #ffcb8f); /* Reverse peach to yellow gradient */
-        transform: translateY(-5px);
-        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-    }
+.toDoMoveDownButton:hover {
+    background: linear-gradient(145deg, #ff9966, #ffc99d); /* Sunset glow */
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
 
-    .toDoMoveDownButton:hover {
-        background: linear-gradient(145deg, #ff9966, #ffc99d); /* Sunset glow */
-        transform: translateY(-5px);
-        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    /* ✅ Active (Pressed) Effect */
-    .toDoDeleteButton:active, .toDoMoveUpButton:active, .toDoMoveDownButton:active {
-        transform: scale(0.95); /* Shrink slightly */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Softer shadow */
-    }
+/* ✅ Active (Pressed) Effect */
+.toDoDeleteButton:active, .toDoMoveUpButton:active, .toDoMoveDownButton:active {
+    transform: scale(0.95); /* Shrink slightly */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Softer shadow */
+}

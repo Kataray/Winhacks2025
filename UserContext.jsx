@@ -92,6 +92,33 @@ export function UserProvider({ children }) {
             })
             .catch(error => console.error("Error updating todo list:", error));
     }
+    
+    const removeTask = (tasks, category) => {
+        if (!user) return;
+
+        const removeTask = (tasksToRemove, category) => {
+            if (!user) return;
+
+            const userRef = ref(db, `anonymousUsers/${auth.currentUser.uid}/todoLists`);
+            const existingTasks = user.todoLists?.[category] ?? [];
+
+            // Filter out the tasks to be removed
+            const updatedCategoryTasks = existingTasks.filter(task => !tasksToRemove.includes(task));
+
+            update(userRef, {[category]: updatedCategoryTasks})
+                .then(() => {
+                    setUser((prev) => ({
+                        ...prev,
+                        todoLists: {
+                            ...prev.todoLists,
+                            [category]: updatedCategoryTasks
+                        }
+                    }));
+                    console.log("Task(s) removed successfully!");
+                })
+                .catch((error) => console.error("Error removing task(s):", error));
+        };
+    }
 
     const addFlashcardSet = (setId, setName, setDescription) => {
         if (!user) return;
@@ -142,7 +169,7 @@ export function UserProvider({ children }) {
     };
 
     return (
-        <UserContext.Provider value={{ user, updateUsername, updateBio, addPoints, addFlashcardSet, addCardToSet, addFriend, addTask }}>
+        <UserContext.Provider value={{ user, updateUsername, updateBio, addPoints, addFlashcardSet, addCardToSet, addFriend, addTask, removeTask }}>
             {children}
         </UserContext.Provider>
     );

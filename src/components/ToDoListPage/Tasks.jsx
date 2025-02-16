@@ -23,8 +23,8 @@ const Tasks = ({ onApply, onClose }) => {
 
     return (
         <div className={styles.toDoOverlay} onClick={onClose}>
-            <div className={styles.toDoPopup} onClick={(e) => e.stopPropagation()}>
-                <button className={styles.toDoCloseButton1} onClick={onClose}>
+            <div className={styles.TaskUp} onClick={(e) => e.stopPropagation()}>
+                <button className={styles.TaskCloseButton} onClick={onClose}>
                     &times;
                 </button>
 
@@ -37,7 +37,7 @@ const Tasks = ({ onApply, onClose }) => {
                     disabled={tasks.length >= MAX_TASKS}
                 />
 
-                <button className={styles.toDoAddButton1}
+                <button className={styles.addButton}
                         onClick={handleAddTask}
                         disabled={tasks.length >= MAX_TASKS}
                 >
@@ -49,12 +49,12 @@ const Tasks = ({ onApply, onClose }) => {
                 )}
 
 
-                <ul className={styles.toDoTaskList1}>
+                <ul className={styles.taskList}>
                     {tasks.map((task, index) => (
-                        <li key={index} className={styles.toDoTaskItem1}>{task}</li>
+                        <li key={index} className={styles.taskItem}>{task}</li>
                     ))}
                 </ul>
-                <button className={styles.toDoApplyButton1}
+                <button className={styles.applyButton}
                         onClick={handleApply}
                         disabled={tasks.length === 0}
                 >

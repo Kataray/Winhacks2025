@@ -29,7 +29,7 @@ const FlashCardGroup = ({data, setCurrentPage, setCurrentCardSet}) => {
     </div>)
 }
 
-const CreateFlashcardGroup = ({user, setCurrentPage, setCurrentCardSet, addFlashcardSet}) => {
+const CreateFlashcardGroup = ({user, setCurrentPage, setCurrentCardSet, addFlashcardSet, addPoints}) => {
     const [cardSetName, setCardSetName] = React.useState("");
     const [cardSetDescription, setCardSetDescription] = React.useState("");
     const [error, setError] = React.useState(null);
@@ -54,6 +54,7 @@ const CreateFlashcardGroup = ({user, setCurrentPage, setCurrentCardSet, addFlash
         addFlashcardSet(
             newId, cardSetName, cardSetDescription
         );
+        addPoints(1);
         setCurrentPage("main");
     }
 
@@ -81,7 +82,7 @@ const CreateFlashcardGroup = ({user, setCurrentPage, setCurrentCardSet, addFlash
         </div>)
 }
 
-const CreateIndividualFlashcard = ({setName, addCardToSet, setCurrentPage}) => {
+const CreateIndividualFlashcard = ({setName, addCardToSet, setCurrentPage, addPoints}) => {
     const [cardType, setCardType] = React.useState("Question");
     const [question, setQuestion] = React.useState("");
     const [answer, setAnswer] = React.useState("");
@@ -147,7 +148,7 @@ const CreateIndividualFlashcard = ({setName, addCardToSet, setCurrentPage}) => {
 
         addCardToSet(setName, newCard)
         setCurrentPage("viewSet");
-
+        addPoints(1);
     }
 
     return (
@@ -311,7 +312,7 @@ const FlashcardPage = ({onClose}) => {
     const [currentPage, setCurrentPage] = React.useState("main");
     const [currentCardSet, setCurrentCardSet] = React.useState(null);
 
-    const {user, addFlashcardSet, addCardToSet} = useContext(UserContext);
+    const {user, addFlashcardSet, addCardToSet, addPoints } = useContext(UserContext);
     console.log(user);
     if (user == null) {
         // refresh
@@ -352,7 +353,9 @@ const FlashcardPage = ({onClose}) => {
                 currentPage === "createFlashcardGroup" &&
                 <>
                     <CreateFlashcardGroup user={user} setCurrentPage={setCurrentPage}
-                                          setCurrentCardSet={setCurrentCardSet} addFlashcardSet={addFlashcardSet}/>
+                                          setCurrentCardSet={setCurrentCardSet} addFlashcardSet={addFlashcardSet}
+                                          addPoints={addPoints}
+                    />
                     <Button variant="outlined"
                             color={"error"}
                             fullWidth={true}
@@ -372,7 +375,7 @@ const FlashcardPage = ({onClose}) => {
             {
                 currentPage === "createFlashcard" &&
                 <CreateIndividualFlashcard setName={currentCardSet.name} addCardToSet={addCardToSet}
-                                           setCurrentPage={setCurrentPage}/>
+                                           setCurrentPage={setCurrentPage} addPoints={addPoints}/>
             }
         </div>
     </div>);

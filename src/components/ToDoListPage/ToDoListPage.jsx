@@ -8,12 +8,10 @@ const MAX_TASKS = 3;
 const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
 
     const [isPopupOpen, setIsPopupOpen] = useState(false);
-    const [taskCounter, setTaskCounter] = useState(0);
     const [currentCategory, setCurrentCategory] = useState(null);
-    const [localTasks, setLocalTasks] = useState(tasks || { school: [], home: [], misc: [] });
     const [loading, setLoading] = React.useState(true);
 
-    const { user, addTask } = useContext(UserContext);
+    const { user, addTask, removeTask, addPoints } = useContext(UserContext);
 
     useEffect(() => {
         if (user !== undefined) {
@@ -25,54 +23,16 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
         return <div>Loading...</div>;
     }
 
-
     const handleApplyTasks = (newTasks) => {
-
         if (currentCategory && newTasks.length > 0) {
-
-            setLocalTasks((prevTasks) => ({
-
-                ...prevTasks,
-                [currentCategory]: [...prevTasks[currentCategory], ...newTasks],
-            }));
-
             addTask(newTasks, currentCategory);
+            addPoints(newTasks.length);
         }
         setIsPopupOpen(false);
     };
 
-    const handleDeleteTask = (category, index) => {
-
-        setLocalTasks((prevTasks) => {
-
-            const updatedTasks = [...prevTasks[category]];
-            updatedTasks.splice(index, 1);
-            return { ...prevTasks, [category]: updatedTasks };
-        });
-    };
-
-
-    const handleMoveUp = (category, index) => {
-
-        setLocalTasks((prevTasks) => {
-
-            if (index === 0) return prevTasks;
-            const updatedTasks = [...prevTasks[category]];
-            [updatedTasks[index], updatedTasks[index - 1]] = [updatedTasks[index - 1], updatedTasks[index]];
-            return { ...prevTasks, [category]: updatedTasks };
-        });
-    };
-
-
-    const handleMoveDown = (category, index) => {
-
-        setLocalTasks((prevTasks) => {
-
-            if (index === prevTasks[category].length - 1) return prevTasks;
-            const updatedTasks = [...prevTasks[category]];
-            [updatedTasks[index], updatedTasks[index + 1]] = [updatedTasks[index + 1], updatedTasks[index]];
-            return { ...prevTasks, [category]: updatedTasks };
-        });
+    const handleDeleteTask = (task, category) => {
+        removeTask(task, category);
     };
 
 
@@ -98,7 +58,7 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                                 setIsPopupOpen(true);
                             }}
 
-                            disabled={localTasks.school.length >= MAX_TASKS}
+                            disabled={user?.todoLists.school.length >= MAX_TASKS}
 
                         >
                             Add Task
@@ -109,16 +69,9 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
 
                                 <li key={index} className={styles.toDoTaskItem}>
                                     {task}
-                                    <button className={styles.toDoMoveUpButton}
-                                            onClick={() => handleMoveUp("school", index)}>▲
-                                    </button>
-
-                                    <button className={styles.toDoMoveDownButton}
-                                            onClick={() => handleMoveDown("school", index)}>▼
-                                    </button>
 
                                     <button className={styles.toDoDeleteButton}
-                                            onClick={() => handleDeleteTask("school", index)}>❌
+                                            onClick={() => handleDeleteTask(task, "school")}>❌
                                     </button>
                                 </li>
                             ))}
@@ -133,7 +86,7 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                                 setCurrentCategory("home");
                                 setIsPopupOpen(true);
                             }}
-                            disabled={localTasks.home.length >= MAX_TASKS}
+                            disabled={user?.todoLists.home.length >= MAX_TASKS}
                         >
                             Add Task
                         </button>
@@ -143,17 +96,8 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                                 <li key={index} className={styles.toDoTaskItem}>
                                     {task}
 
-                                    {/* ✅ Corrected buttons */}
-                                    <button className={styles.toDoMoveUpButton}
-                                            onClick={() => handleMoveUp("home", index)}>▲
-                                    </button>
-
-                                    <button className={styles.toDoMoveDownButton}
-                                            onClick={() => handleMoveDown("home", index)}>▼
-                                    </button>
-
                                     <button className={styles.toDoDeleteButton}
-                                            onClick={() => handleDeleteTask("home", index)}>❌
+                                            onClick={() => handleDeleteTask(task, "home")}>❌
                                     </button>
                                 </li>
                             ))}
@@ -168,7 +112,7 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                                 setCurrentCategory("misc");
                                 setIsPopupOpen(true);
                             }}
-                            disabled={localTasks.misc.length >= MAX_TASKS}
+                            disabled={user?.todoLists.misc.length >= MAX_TASKS}
 
                         >
                             Add Task
@@ -178,17 +122,8 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                                 <li key={index} className={styles.toDoTaskItem}>
                                     {task}
 
-                                    {/* ✅ Corrected buttons */}
-                                    <button className={styles.toDoMoveUpButton}
-                                            onClick={() => handleMoveUp("misc", index)}>▲
-                                    </button>
-
-                                    <button className={styles.toDoMoveDownButton}
-                                            onClick={() => handleMoveDown("misc", index)}>▼
-                                    </button>
-
                                     <button className={styles.toDoDeleteButton}
-                                            onClick={() => handleDeleteTask("misc", index)}>❌
+                                            onClick={() => handleDeleteTask(task, "misc")}>❌
                                     </button>
                                 </li>
                             ))}
@@ -197,11 +132,13 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                 </div>
 
                 {isPopupOpen && (
+                    <>
                     <Tasks
                         onApply={handleApplyTasks}
                         onClose={() => setIsPopupOpen(false)}
-                        existingTasks={localTasks[currentCategory]}
+                        existingTasks={user.todoLists[currentCategory]}
                     />
+                    </>
                 )}
 
 
