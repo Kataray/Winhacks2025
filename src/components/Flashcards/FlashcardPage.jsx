@@ -29,7 +29,7 @@ const FlashCardGroup = ({data, setCurrentPage, setCurrentCardSet}) => {
     </div>)
 }
 
-const CreateFlashcardGroup = ({user, setCurrentPage, setCurrentCardSet, addFlashcardSet, addPoints}) => {
+const CreateFlashcardGroup = ({user, setCurrentPage, setCurrentCardSet, addFlashcardSet}) => {
     const [cardSetName, setCardSetName] = React.useState("");
     const [cardSetDescription, setCardSetDescription] = React.useState("");
     const [error, setError] = React.useState(null);
@@ -54,7 +54,6 @@ const CreateFlashcardGroup = ({user, setCurrentPage, setCurrentCardSet, addFlash
         addFlashcardSet(
             newId, cardSetName, cardSetDescription
         );
-        addPoints(1);
         setCurrentPage("main");
     }
 
@@ -147,8 +146,9 @@ const CreateIndividualFlashcard = ({setName, addCardToSet, setCurrentPage, addPo
         }
 
         addCardToSet(setName, newCard)
-        setCurrentPage("viewSet");
         addPoints(1);
+        setCurrentPage("viewSet");
+
     }
 
     return (
@@ -302,7 +302,7 @@ const ViewFlashcards = ({data, setCurrentPage}) => {
             }}>Go Back</Button>
 
             <div className={styles.flashcardList}>
-                {data.cards?.length > 0 && data.cards.map(card => <IndividualFlashcard card={card}/>)}
+                {data.cards.map(card => <IndividualFlashcard card={card}/>)}
             </div>
         </>
     )
@@ -312,7 +312,7 @@ const FlashcardPage = ({onClose}) => {
     const [currentPage, setCurrentPage] = React.useState("main");
     const [currentCardSet, setCurrentCardSet] = React.useState(null);
 
-    const {user, addFlashcardSet, addCardToSet, addPoints } = useContext(UserContext);
+    const {user, addFlashcardSet, addCardToSet, addPoints} = useContext(UserContext);
     console.log(user);
     if (user == null) {
         // refresh
@@ -320,8 +320,8 @@ const FlashcardPage = ({onClose}) => {
         return console.log("user is null");
     }
 
-    return (<div className={styles.overlay}>
-        <div className={styles.popup}>
+    return (<div className={styles.flashCardOverlay}>
+        <div className={styles.flashCardPopup}>
             <button className={styles.closeButton} onClick={onClose}>
                 &times;
             </button>
@@ -329,7 +329,7 @@ const FlashcardPage = ({onClose}) => {
             {
                 currentPage === "main" &&
                 <>
-                    <h2>Flashcards</h2>
+                    <h1 style={{ color: '#efa565'}}><em>Create Your FlashCard</em></h1>
                     <Button
                         variant="outlined"
                         color={"success"}
@@ -353,9 +353,7 @@ const FlashcardPage = ({onClose}) => {
                 currentPage === "createFlashcardGroup" &&
                 <>
                     <CreateFlashcardGroup user={user} setCurrentPage={setCurrentPage}
-                                          setCurrentCardSet={setCurrentCardSet} addFlashcardSet={addFlashcardSet}
-                                          addPoints={addPoints}
-                    />
+                                          setCurrentCardSet={setCurrentCardSet} addFlashcardSet={addFlashcardSet}/>
                     <Button variant="outlined"
                             color={"error"}
                             fullWidth={true}

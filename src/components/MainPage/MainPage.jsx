@@ -91,7 +91,7 @@ const MainPage = () => {
                 <img src="/assets/ProfileBgEmpty.png" alt="CircleBg" className={styles.whiteCircleBg}/>
             </div>
             <div className={styles.pointsBox}>Total Points: {user?.points}</div>
-            <div className={styles.rankBox} onClick={() => setShowInformationPopup(true)}>Information</div>
+            <div className={styles.rankBox}>V.1.1</div>
             <div className={styles.acheivmentsBox} onClick={() => setRanks(true)}>Achievements</div>
 
 
