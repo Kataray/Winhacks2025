@@ -1,0 +1,184 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.popup {
+    padding: 50px;
+    font-size: 120%;
+    border-radius: 10px;
+    position: relative;
+    width: 1000px;
+    height: 500px;
+    background: linear-gradient(to bottom right, #ffc99e, #f5b97f);
+
+    display: flex;
+    flex-direction: column; /* Stacks elements vertically */
+    align-items: center; /* Centers horizontally */
+    justify-content: flex-start; /* Centers vertically */
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.friendList {
+    padding: 5%;
+    display: flex;
+    justify-content: center; /* Centers the buttons horizontally */
+    gap: 35px; /* Adds space between buttons */
+    margin-top: 12px;
+    flex-wrap: wrap; /* Allows wrapping if there are many buttons */
+}
+
+
+.friendItem {
+    padding: 20px 30px;
+    background-color: #ff9f68;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 25px;
+    width: 220px; /* Set a fixed width for consistency */
+    height: 75px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds subtle depth */
+}
+.friendItem:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.friendItem:hover {
+    background: linear-gradient(45deg, #ff6b42,#e88b50);
+    animation: shake 0.3s ease-in-out;
+
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-4px); }
+    100% { transform: translateX(0); }
+}
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+.friendList li {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.friendList li:hover {
+    background-color: #f0f0f0;
+}
+
+
+.requestMessage {
+    margin-top: 20px;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+}
+.flashcardList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px;
+    max-height: 350px;
+    overflow-y: auto;
+    width: 100%;
+    border: #e88b50;
+
+
+}
+
+.flashcardItem {
+    padding: 20px 20px;
+    background: linear-gradient(135deg, #ff9f68, #ff8e51); /* Gradient from orange to red */
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+    width: 250px;
+    height: 150px;
+    max-width: 400px;
+    text-align: center;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.flashcardItem:hover {
+    background: linear-gradient(45deg, #ff6b42, #e88b50);
+}
+
+.flashcard {
+    text-align: center;
+    font-size: 20px;
+}
+
+.answer {
+    margin-top: 15px;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+}
+
+/* Hide scrollbar by default */
+.flashcardList::-webkit-scrollbar {
+    width: 10px;
+    display: none; /* Hide scrollbar when not needed */
+    border-radius: 10px;
+}
+
+/* Show scrollbar only when there's overflow */
+.flashcardList:hover::-webkit-scrollbar {
+    display: block;
+}
+
+/* Style the scrollbar */
+.flashcardList::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #ff9f68, #e88b50); /* Gradient color */
+    background: #e88b50;
+    border-radius: 10px;
+    border: 2px solid #ffc99e;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.flashcardList::-webkit-scrollbar-track {
+    background: #f5b97f;
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+
+}
+
+.flashcardList::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #ff6b42, #e88b50); /* Darker gradient */
+    transform: scale(1.1); /* Slightly enlarges */
+
+}
