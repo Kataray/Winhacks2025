@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import styles from "./MainPage.module.css";
-import Popup from "../Popup/Popup";
+// import Popup from "../Popup/Popup";
+import EditProfilePopup from "../EditProfilePopup/EditProfilePopup.jsx";
+import FriendsListPopup from "../FriendsListPopup/FriendsListPopup.jsx";
 
 const MainPage = () => {
-    const [showPopup, setShowPopup] = useState(false);
+    const [showEditProfilePopup, setShowEditProfilePopup] = useState(false);
+    const [showFriendsPopup, setShowFriendsPopup] = useState(false);
     const [bio, setBio] = useState("");
 
     return (
@@ -20,9 +23,10 @@ const MainPage = () => {
                 <img src="/assets/ProfileBgEmpty.png" alt="CircleBg" className={styles.whiteCircleBg}/>
             </div>
             {/*<button className={styles.openButton} onClick={() => setShowPopup(true)}>*/}
-            {/*    Open Popup*/}
+            {/*    Open FriendsListPopup*/}
             {/*</button>*/}
-            {showPopup && <Popup onClose={() => setShowPopup(false)}/>}
+            {/*{showPopup && <FriendsListPopup onClose={() => setShowPopup(false)} />}*/}
+
 
             <div className={styles.acheivmentsBox}></div>
             <div className={styles.pointsBox}></div>
@@ -42,16 +46,24 @@ const MainPage = () => {
                 <img src="/assets/ProfilePic.png" alt="Logo" className={styles.profilePic}/>
             </div>
 
-            <div className={styles.EditProfileButton}>
+            <div
+                className={styles.EditProfileButton}
+                onClick={() => setShowEditProfilePopup(true)}
+            >
                 Edit Profile
             </div>
+            {showEditProfilePopup && <EditProfilePopup onClose={() => setShowEditProfilePopup(false)} />}
 
-            <div className={styles.FriendsButton}>
+            <div
+                className={styles.FriendsButton}
+                onClick={() => setShowFriendsPopup(true)}
+            >
                 Friends
             </div>
+            {showFriendsPopup && <FriendsListPopup onClose={() => setShowFriendsPopup(false)} />}
 
             <div className={styles.NameDisplay}>Kataray</div>
-
+            
         </div>
     );
 };
