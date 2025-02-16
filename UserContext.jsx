@@ -40,6 +40,27 @@ export function UserProvider({ children }) {
             .catch((error) => console.error("Error updating username:", error));
     };
 
+    const updateBio = (newBio) => {
+        if (!user) return;
+        const userRef = ref(db, `anonymousUsers/${auth.currentUser.uid}`);
+        update(userRef, { bio: newBio })
+            .then(() => {
+                setUser((prev) => ({ ...prev, bio: newBio }));
+                console.log("Bio updated successfully!");
+            })
+            .catch((error) => console.error("Error updating bio:", error));
+    }
+
+    const updatePoints = (newPoints) => {
+        if (!user) return;
+        const userRef = ref(db, `anonymousUsers/${auth.currentUser.uid}`);
+        update(userRef, { points: newPoints })
+            .then(() => {
+                setUser((prev) => ({ ...prev, points: newPoints }));
+                console.log("Points updated successfully!");
+            })
+            .catch((error) => console.error("Error updating points:", error));
+    }
 
     const addFlashcardSet = (setId, setName, setDescription) => {
         if (!user) return;
@@ -90,7 +111,7 @@ export function UserProvider({ children }) {
     };
 
     return (
-        <UserContext.Provider value={{ user, updateUsername, addFlashcardSet, addCardToSet }}>
+        <UserContext.Provider value={{ user, updateUsername, updateBio, updatePoints, addFlashcardSet, addCardToSet }}>
             {children}
         </UserContext.Provider>
     );
