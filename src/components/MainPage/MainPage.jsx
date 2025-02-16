@@ -15,7 +15,7 @@ const MainPage = () => {
     const [bio, setBio] = useState("");
     const [showInformationPopup, setShowInformationPopup] = useState(false);
 
-    // State for avatar selections
+
     const [selectedHair, setSelectedHair] = useState("");
     const [selectedSkin, setSelectedSkin] = useState("");
     const [selectedMouth, setSelectedMouth] = useState("");
