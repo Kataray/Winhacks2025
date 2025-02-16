@@ -8,9 +8,11 @@ import {generateUsername} from "unique-username-generator";
 import {UserProvider} from "../UserContext.jsx";
 
 function App() {
-    // Initialize Firebase only once
+
     const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
     const auth = getAuth(app);
+
+    const [isUserCreated, setIsUserCreated] = useState(false);
 
     useEffect(() => {
         signInAnonymously(auth)
@@ -35,7 +37,7 @@ function App() {
                         console.log("User already exists:", existingUsername);
                     } else {
                         // Generate a new username if none exists
-                        const newUsername = generateUsername("-", 3);
+                        const newUsername = generateUsername("", 2, 16);
 
                         set(userRef, {
                             username: newUsername,
@@ -76,7 +78,8 @@ function App() {
                             friends: [{placeholder: true}],
                         })
                             .then(() => {
-                                console.log("New username saved:", newUsername)
+                                console.log("New username saved:", newUsername);
+                                setIsUserCreated(true);
                             })
                             .catch((error) => console.error("Error saving username:", error));
                     }
@@ -86,6 +89,13 @@ function App() {
             }
         });
     }, []);
+
+    useEffect(() => {
+        if (isUserCreated) {
+            console.log("Reloading to apply new user data...");
+            window.location.reload();
+        }
+    }, [isUserCreated]);
 
     return (
         <UserProvider>

@@ -244,16 +244,9 @@ html {
     padding: 10px;
 }
 
-.BioInput {
-    width: 90%;
-    height: 90%;
-    background: transparent;
-    border: none;
-    resize: none; /* Prevent resizing */
-    font-size: min(1.2vw, 1.5em);
-    color: #b44d19;
-    outline: none; /* Remove blue outline on focus */
-    font-family: Arial, sans-serif;
+body {
+    margin: 0;
+    overflow-x: hidden;
 }
 
 .profilePic {
@@ -267,48 +260,34 @@ html {
     border: none;
     border-radius: 15px;
     color: #b1afaf;
-
 }
 
-.EditProfileButton {
+.openButton {
     position: absolute;
-    top: 70%;
-    left: 6%;
-    width: 11.5%;
-    height: 5%;
-    background-color: #f89464;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    padding: 10px;
-    font-size: min(1.5vw, 1.2em);
-    font-weight: bold;
-    color: white;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    font-size: 16px;
     cursor: pointer;
-    text-align: center;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
 }
 
-.EditProfileButton:hover {
-    background-color: #e27b50;
+.openButton:hover {
+    background-color: #f0f0f0;
 }
 
-
-.FriendsButton {
+.ProfileSection {
     position: absolute;
-    top: 70%;
-    left: 18.5%;
-    width: 11.5%;
-    height: 5%; /* Adjust height */
-    background-color: #f89464;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    padding: 10px;
-    font-size: min(1.5vw, 1.2em);
-    font-weight: bold;
-    color: white;
+    top: 5%;
+    left: 3%;
+    bottom: 5%;
+    width: 30%;
+    background-color: #ffa85f;
     cursor: pointer;
     text-align: center;
 }
@@ -448,16 +427,6 @@ html {
     color: #b1afaf;
 }
 
-.flashCardImg {
-    position: absolute;
-    top: 22%;
-    right: 25.5%;
-    width: 38%;
-    object-fit: cover;
-    display: flex;
-    border: none;
-    border-radius: 15px;
-    color: #b1afaf;
 }
 
 .PointDisplay {
@@ -471,7 +440,7 @@ html {
 
 }
 .AchievementDisplay {
-
+  
 }
 .InfoDisplay {
 

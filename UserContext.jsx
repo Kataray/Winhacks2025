@@ -51,12 +51,12 @@ export function UserProvider({ children }) {
             .catch((error) => console.error("Error updating bio:", error));
     }
 
-    const updatePoints = (newPoints) => {
+    const addPoints = (newPoints) => {
         if (!user) return;
         const userRef = ref(db, `anonymousUsers/${auth.currentUser.uid}`);
-        update(userRef, { points: newPoints })
+        update(userRef, { points: user.points + newPoints })
             .then(() => {
-                setUser((prev) => ({ ...prev, points: newPoints }));
+                setUser((prev) => ({ ...prev, points: user.points + newPoints }));
                 console.log("Points updated successfully!");
             })
             .catch((error) => console.error("Error updating points:", error));
@@ -142,7 +142,7 @@ export function UserProvider({ children }) {
     };
 
     return (
-        <UserContext.Provider value={{ user, updateUsername, updateBio, updatePoints, addFlashcardSet, addCardToSet, addFriend, addTask }}>
+        <UserContext.Provider value={{ user, updateUsername, updateBio, addPoints, addFlashcardSet, addCardToSet, addFriend, addTask }}>
             {children}
         </UserContext.Provider>
     );

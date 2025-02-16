@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect, useContext} from "react";
 import styles from "./EditProfilePopup.module.css";
+import {UserContext} from "../../../UserContext.jsx";
 
 const EditProfilePopup = ({ onClose }) => {
     // State for avatar selections
@@ -11,6 +12,8 @@ const EditProfilePopup = ({ onClose }) => {
     const [circle, setCircle] = useState("/assets/whiteCircle.png");
 
     const [name, setName] = useState("");
+
+    const { updateUsername } = useContext(UserContext);
 
     // Load saved selections from localStorage on component mount
     useEffect(() => {
@@ -31,6 +34,7 @@ const EditProfilePopup = ({ onClose }) => {
         localStorage.setItem("selectedMouth", selectedMouth);
         localStorage.setItem("selectedEyes", selectedEyes);
         localStorage.setItem("selectedShirt", selectedShirt);
+        updateUsername(name);
         onClose(); // Close the popup
         window.location.reload();
     };
