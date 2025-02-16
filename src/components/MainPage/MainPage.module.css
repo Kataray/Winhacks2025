@@ -334,5 +334,116 @@ html {
 /*    cursor: pointer;*/
 /*}*/
 
+.avatarLayer {
+    position: absolute;
+    top: 14.2%;
+    left: 9.3%;
+    bottom: 60%;
+    width: 17.3%;
+    object-fit: cover;
+    display: flex;
+    border: none;
+    border-radius: 15px;
+    color: #b1afaf;
+}
 
+.avatarLayerHair {
+    position: absolute;
+    top: 10.5%;
+    left: 6.32%;
+    bottom: 60%;
+    width: 22.6%;
+    object-fit: cover;
+    display: flex;
+    border: none;
+    border-radius: 15px;
+    color: #b1afaf;
+}
+
+.avatarLayerShirt {
+    position: absolute;
+    top: 44.1%;
+    left: 9.5%;
+    bottom: 60%;
+    width: 16.5%;
+    object-fit: cover;
+    display: flex;
+    border: none;
+    border-radius: 15px;
+    color: #b1afaf;
+}
+.avatarLayerMouth {
+    position: absolute;
+    top: 36%;
+    left: 15%;
+    bottom: 60%;
+    width: 6%;
+    object-fit: cover;
+    display: flex;
+    border: none;
+    border-radius: 15px;
+    color: #b1afaf;
+}
+.avatarLayerEyes{
+    position: absolute;
+    top: 28%;
+    left: 13%;
+    bottom: 60%;
+    width: 10%;
+    object-fit: cover;
+    display: flex;
+    border: none;
+    border-radius: 15px;
+    color: #b1afaf;
+}
+
+.circleCover {
+    position: absolute;
+    top: 10%;
+    left: 6%;
+    bottom: 60%;
+    width: 24.5%;
+    object-fit: cover;
+    display: flex;
+    border: none;
+    border-radius: 15px;
+    color: #b1afaf;
+}
+
+.ThickCircle {
+    position: absolute;
+    top: -14.2%;
+    left: -7%;
+    bottom: 60%;
+    width: 80%;
+    object-fit: cover;
+    display: flex;
+    border: none;
+    border-radius: 15px;
+    color: #b1afaf;
+}
+
+.ToDoImg {
+    position: absolute;
+    top: 20%;
+    right: 3.5%;
+    width: 30%;
+    object-fit: cover;
+    display: flex;
+    border: none;
+    border-radius: 15px;
+    color: #b1afaf;
+}
+
+.flashCardImg {
+    position: absolute;
+    top: 22%;
+    right: 25.5%;
+    width: 38%;
+    object-fit: cover;
+    display: flex;
+    border: none;
+    border-radius: 15px;
+    color: #b1afaf;
+}
 

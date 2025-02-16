@@ -1,16 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./EditProfilePopup.module.css";
 
 const EditProfilePopup = ({ onClose }) => {
     // State for avatar selections
-    const [selectedHair, setSelectedHair] = useState("/assets/profilePicAssets/hair/Hair1A.png");
-    const [selectedSkin, setSelectedSkin] = useState("/assets/profilePicAssets/heads/Skin1.png");
-    const [selectedMouth, setSelectedMouth] = useState("/assets/profilePicAssets/mouths/Mouth1.png");
-    const [selectedEyes, setSelectedEyes] = useState("/assets/profilePicAssets/eyes/Eyes1.png");
-    const [selectedShirt, setSelectedShirt] = useState("/assets/profilePicAssets/shirts/OrangeShirt.png");
-    const [circle, setcircle] = useState("/assets/whiteCircle.png");
+    const [selectedHair, setSelectedHair] = useState("");
+    const [selectedSkin, setSelectedSkin] = useState("");
+    const [selectedMouth, setSelectedMouth] = useState("");
+    const [selectedEyes, setSelectedEyes] = useState("");
+    const [selectedShirt, setSelectedShirt] = useState("");
+    const [circle, setCircle] = useState("/assets/whiteCircle.png");
 
     const [name, setName] = useState("");
+
+    // Load saved selections from localStorage on component mount
+    useEffect(() => {
+        setName(localStorage.getItem("profileName") || "");
+
+        setSelectedHair(localStorage.getItem("selectedHair") || "/assets/profilePicAssets/hair/Hair1A.png");
+        setSelectedSkin(localStorage.getItem("selectedSkin") || "/assets/profilePicAssets/heads/Skin1.png");
+        setSelectedMouth(localStorage.getItem("selectedMouth") || "/assets/profilePicAssets/mouths/Mouth1.png");
+        setSelectedEyes(localStorage.getItem("selectedEyes") || "/assets/profilePicAssets/eyes/Eyes1.png");
+        setSelectedShirt(localStorage.getItem("selectedShirt") || "/assets/profilePicAssets/shirts/OrangeShirt.png");
+    }, []);
+
+    // Save selections when clicking "Save"
+    const handleSave = () => {
+        localStorage.setItem("profileName", name);
+        localStorage.setItem("selectedHair", selectedHair);
+        localStorage.setItem("selectedSkin", selectedSkin);
+        localStorage.setItem("selectedMouth", selectedMouth);
+        localStorage.setItem("selectedEyes", selectedEyes);
+        localStorage.setItem("selectedShirt", selectedShirt);
+        onClose(); // Close the popup
+        window.location.reload();
+    };
 
     return (
         <div className={styles.editProfileOverlay}>
@@ -76,17 +99,16 @@ const EditProfilePopup = ({ onClose }) => {
 
                 {/* Main avatar display */}
                 <div className={styles.mainCharacter}>
-                    <img src={selectedSkin} alt="Selected Skin" className={styles.avatarLayer}/>
-                    <img src={selectedShirt} alt="Selected Shirt" className={styles.avatarLayerShirt}/>
-                    <img src={selectedHair} alt="Selected Hair" className={styles.avatarLayerHair}/>
-                    <img src={selectedMouth} alt="Selected Mouth" className={styles.avatarLayerMouth}/>
-                    <img src={selectedEyes} alt="Selected Eyes" className={styles.avatarLayerEyes}/>
-                    <img src={circle} alt="circle" className={styles.circleCover}/>
+                    <img src={selectedSkin} alt="Selected Skin" className={styles.avatarLayer} />
+                    <img src={selectedShirt} alt="Selected Shirt" className={styles.avatarLayerShirt} />
+                    <img src={selectedHair} alt="Selected Hair" className={styles.avatarLayerHair} />
+                    <img src={selectedMouth} alt="Selected Mouth" className={styles.avatarLayerMouth} />
+                    <img src={selectedEyes} alt="Selected Eyes" className={styles.avatarLayerEyes} />
+                    <img src={circle} alt="circle" className={styles.circleCover} />
                 </div>
             </div>
 
             <div className={styles.nameInputContainer}>
-            <label htmlFor="nameInput"></label>
                 <input
                     type="text"
                     id="nameInput"
@@ -95,6 +117,7 @@ const EditProfilePopup = ({ onClose }) => {
                     className={styles.nameInput}
                     placeholder="Your name"
                 />
+                <button className={styles.saveButton} onClick={handleSave}>Save</button>
             </div>
         </div>
     );
