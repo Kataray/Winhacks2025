@@ -130,7 +130,12 @@ export function UserProvider({ children }) {
             description: setDescription,
             date: new Date().getDate() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getFullYear(),
             lastEdit: new Date().getDate() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getFullYear(),
-            cards: []
+            cards: [{
+                id: 1,
+                type: "Question",
+                question: "Example Question",
+                answer: "Example Answer"
+            }]
         };
 
         const updatedFlashcardSets = [...user.flashcardSets, newFlashcardSet];

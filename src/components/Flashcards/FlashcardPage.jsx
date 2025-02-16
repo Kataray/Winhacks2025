@@ -302,7 +302,7 @@ const ViewFlashcards = ({data, setCurrentPage}) => {
             }}>Go Back</Button>
 
             <div className={styles.flashcardList}>
-                {data.cards.map(card => <IndividualFlashcard card={card}/>)}
+                {data.cards?.length > 0 && data.cards.map(card => <IndividualFlashcard card={card}/>)}
             </div>
         </>
     )
