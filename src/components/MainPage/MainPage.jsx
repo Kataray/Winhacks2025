@@ -48,14 +48,14 @@ const MainPage = () => {
                 <img src="/assets/ProfileBgEmpty.png" alt="CircleBg" className={styles.whiteCircleBg}/>
             </div>
 
-            <div className={styles.acheivmentsBox}></div>
-            <div className={styles.pointsBox}></div>
-            <div className={styles.rankBox}></div>
+            <div className={styles.acheivmentsBox}>Achievements</div>
+            <div className={styles.pointsBox}>Total Points: ____</div>
+            <div className={styles.rankBox}>Information</div>
 
             <div className={styles.BioArea}></div>
 
             {selectedHair && selectedSkin && selectedMouth && selectedEyes && selectedShirt ? (
-                <div className={styles.mainCharacter}>
+                <div className={styles.avatarContainer}>
                     <img src={selectedSkin} alt="Selected Skin" className={styles.avatarLayer}/>
                     <img src={selectedShirt} alt="Selected Shirt" className={styles.avatarLayerShirt}/>
                     <img src={selectedHair} alt="Selected Hair" className={styles.avatarLayerHair}/>
@@ -69,9 +69,9 @@ const MainPage = () => {
                 </div>
             )}
 
-            <div className={styles.ThickCircle}>
-                <img src="/assets/ThickWhiteCircle.png" alt="CircleBg" className={styles.ThickCircle}/>
-            </div>
+            {/*<div className={styles.ThickCircle}>*/}
+            {/*    <img src="/assets/ThickWhiteCircle.png" alt="CircleBg" className={styles.ThickCircle}/>*/}
+            {/*</div>*/}
 
             <div
                 className={styles.EditProfileButton}
@@ -104,8 +104,9 @@ const MainPage = () => {
                 <img src="/assets/Todo.png" alt="Logo" className={styles.ToDoImg}/>
             </div>
             <div className={styles.flashCardImg}>
-                <img src="/assets/Flashcards.png" alt="Logo" className={styles.flashCardImg}/>
+                <img src="/assets/FlashCardImg.png" alt="Logo" className={styles.flashCardImg}/>
             </div>
+
         </div>
     );
 };

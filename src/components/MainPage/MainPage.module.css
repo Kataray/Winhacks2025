@@ -113,67 +113,98 @@ html {
         transition: background-color 0.3s ease;
     }
 
-    .acheivmentsBox {
-        position: absolute;
-        top: 5%;
-        right: 48%;
-        bottom: 87%;
-        width: 15%;
-        background-size: cover;
-        background-position: center; /* Centers the image */
-        background-repeat: no-repeat; /* Prevents repetition */
-        background-color: #f89464;
-        cursor: pointer;
-        border: none;
-        border-radius: 15px;
-        color: #333;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
-        transition: background-color 0.3s ease;
-    }
+.acheivmentsBox {
+    position: absolute;
+    top: 5%;
+    right: 48%;
+    bottom: 87%;
+    width: 15%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f89464;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+    transition: background-color 0.3s ease;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff; /* White text for better contrast */
+}
 
-    .testImage {
-        position: absolute;
-        top: 2%;
-        right: 4%;
-        width: 28%;
-        object-fit: cover;
-    }
+.acheivmentsBox:hover {
+    background-color: #f76c5e; /* Lighter shade on hover */
+}
 
-    .pointsBox {
-        position: absolute;
-        top: 5%;
-        right: 32%;
-        bottom: 87%;
-        width: 15%;
-        background-size: cover; /* Ensures the image covers the box */
-        background-position: center; /* Centers the image */
-        background-repeat: no-repeat; /* Prevents repetition */
-        background-color: #f89464;
-        cursor: pointer;
-        border: none;
-        border-radius: 15px;
-        color: #333;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
-        transition: background-color 0.3s ease;
-    }
+.testImage {
+    position: absolute;
+    top: 2%;
+    right: 4%;
+    width: 28%;
+    object-fit: cover;
+}
 
-    .rankBox {
-        position: absolute;
-        top: 5%;
-        right: 15.5%;
-        bottom: 87%;
-        width: 15%;
-        background-size: cover; /* Ensures the image covers the box */
-        background-position: center; /* Centers the image */
-        background-repeat: no-repeat; /* Prevents repetition */
-        background-color: #f89464;
-        cursor: pointer;
-        border: none;
-        border-radius: 15px;
-        color: #333;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
-        transition: background-color 0.3s ease;
-    }
+.pointsBox {
+    position: absolute;
+    top: 5%;
+    right: 32%;
+    bottom: 87%;
+    width: 15%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f89464;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+    transition: background-color 0.3s ease;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.pointsBox:hover {
+    background-color: #f76c5e;
+}
+
+.rankBox {
+    position: absolute;
+    top: 5%;
+    right: 15.5%;
+    bottom: 87%;
+    width: 15%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f89464;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+    transition: background-color 0.3s ease;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.rankBox:hover {
+    background-color: #f76c5e;
+}
+
 
     .whiteCircleBg {
         position: absolute;
@@ -334,94 +365,76 @@ html {
 /*    cursor: pointer;*/
 /*}*/
 
-.avatarLayer {
+.avatarContainer {
     position: absolute;
-    top: 14.2%;
-    left: 9.3%;
-    bottom: 60%;
-    width: 17.3%;
-    object-fit: cover;
+    top: 8%; /* Adjust top position */
+    left: 5%; /* Adjust left position */
+    width: 25%; /* Set width */
+    padding-top: 25%; /* Set padding to create a square shape */
+    border-radius: 50%; /* Makes it a circle */
+    background-color: #ffffff; /* Red background for the circle */
+    object-fit: cover; /* Ensures content fits within the circle */
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatarLayer,
+.avatarLayerHair,
+.avatarLayerShirt,
+.avatarLayerMouth,
+.avatarLayerEyes,
+.circleCover,
+.ThickCircle {
+    position: absolute; /* Keeps layering but inside a fixed container */
+    object-fit: cover;
     border: none;
     border-radius: 15px;
-    color: #b1afaf;
+}
+
+/* Adjusting specific layers */
+.avatarLayer {
+    width: 67%;
+    top: 17%;
+    left:18%;
 }
 
 .avatarLayerHair {
-    position: absolute;
-    top: 10.5%;
-    left: 6.32%;
-    bottom: 60%;
-    width: 22.6%;
-    object-fit: cover;
-    display: flex;
-    border: none;
-    border-radius: 15px;
-    color: #b1afaf;
+    width: 90%;
+    top: 8%;
+    left:4.5%;
 }
 
 .avatarLayerShirt {
-    position: absolute;
-    top: 44.1%;
-    left: 9.5%;
-    bottom: 60%;
-    width: 16.5%;
-    object-fit: cover;
-    display: flex;
-    border: none;
-    border-radius: 15px;
-    color: #b1afaf;
+    width: 60%; /* Increased width */
+    top: 79%; /* Moved slightly up */
+    left: 20%;
 }
+
 .avatarLayerMouth {
-    position: absolute;
-    top: 36%;
-    left: 15%;
-    bottom: 60%;
-    width: 6%;
-    object-fit: cover;
-    display: flex;
-    border: none;
-    border-radius: 15px;
-    color: #b1afaf;
+    width: 25%;
+    top: 60%;
 }
-.avatarLayerEyes{
-    position: absolute;
-    top: 28%;
-    left: 13%;
-    bottom: 60%;
-    width: 10%;
-    object-fit: cover;
-    display: flex;
-    border: none;
-    border-radius: 15px;
-    color: #b1afaf;
+
+.avatarLayerEyes {
+    width: 45%;
+    top: 46%;
+    left: 27%;
+    /*position: fixed;*/
 }
 
 .circleCover {
-    position: absolute;
-    top: 10%;
-    left: 6%;
-    bottom: 60%;
-    width: 24.5%;
-    object-fit: cover;
-    display: flex;
-    border: none;
-    border-radius: 15px;
-    color: #b1afaf;
+    width: 105%;
+    top:-1%;
+    left: -1%;
 }
 
-.ThickCircle {
-    position: absolute;
-    top: -14.2%;
-    left: -7%;
-    bottom: 60%;
-    width: 80%;
-    object-fit: cover;
-    display: flex;
-    border: none;
-    border-radius: 15px;
-    color: #b1afaf;
-}
+/*.ThickCircle {*/
+/*    width: 80%;*/
+/*    top: -18%;*/
+/*    left: -7%;*/
+/*}*/
+
 
 .ToDoImg {
     position: absolute;
@@ -447,3 +460,19 @@ html {
     color: #b1afaf;
 }
 
+.PointDisplay {
+    top:0px;
+    left:60px;
+    font-size: min(1.5vw, 1.2em);
+    font-weight: bold;
+    color: #a40000;
+    cursor: pointer;
+    text-align: center;
+
+}
+.AchievementDisplay {
+
+}
+.InfoDisplay {
+
+}
