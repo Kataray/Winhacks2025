@@ -70,8 +70,8 @@ const UserTable = () => {
                                 {
                                     <>
                                         { user.points < 25 && <img src={"/assets/chopped.png"} width={"48px"} /> }
-                                        { user.points > 24 && user.points < 61 && <img src={"/assets/NLEchoppa.png"} width={"48px"} /> }
-                                        { user.points > 60 && <img src={"/assets/choptimusPrime.png"} width={"48px"} /> }
+                                        { user.points > 24 && user.points < 60 && <img src={"/assets/NLEchoppa.png"} width={"48px"} /> }
+                                        { user.points > 59 && <img src={"/assets/choptimusPrime.png"} width={"48px"} /> }
                                     </>
                                 }
                             </TableCell>

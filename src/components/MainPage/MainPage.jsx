@@ -15,6 +15,7 @@ const MainPage = () => {
     const [showFriendsPopup, setShowFriendsPopup] = useState(false);
     const [bio, setBio] = useState("");
     const [showInformationPopup, setShowInformationPopup] = useState(false);
+    const [ranks, setRanks] = useState(false);
 
 
     const [selectedHair, setSelectedHair] = useState("");
@@ -77,7 +78,7 @@ const MainPage = () => {
                 <p className={styles.smallText}>Setup and create questions</p>
                 <p className={styles.smallText}>that you can then test on!</p>
                 <p className={styles.smallText}></p>
-                <p className={styles.smallText}>Use the sets!</p>
+                <p className={styles.smallText}>Use the sets</p>
                 <p className={styles.smallText}>to compete with </p>
                 <p className={styles.smallText}>friends! </p>
             </div>
@@ -89,30 +90,10 @@ const MainPage = () => {
             <div className={styles.whiteCircleBg}>
                 <img src="/assets/ProfileBgEmpty.png" alt="CircleBg" className={styles.whiteCircleBg}/>
             </div>
-
-            </div>
-
-            {/* ✅ Open ToDoListPage and pass tasks */}
-            {showToDo && (
-                <ToDoListPage
-                    onClose={() => setShowToDo(false)}
-                    tasks={tasks}
-                    onFinalApply={handleApplyAllTasks} // ✅ Pass function to save tasks
-                />
-            )}
-            {ranks && (
-                <Ranks
-                    onClose={() => setRanks(false)}
-                />
-            )}
-            <div className={styles.acheivmentsBox}>Achievements</div>
             <div className={styles.pointsBox}>Total Points: {user?.points}</div>
-            <div className={styles.rankBox} onClick={() => setShowInformationPopup(true)}>
-                Information
-            </div>
-            {showInformationPopup && (
-                <InformationPopup onClose={() => setShowInformationPopup(false)}/>
-            )}
+            <div className={styles.rankBox} onClick={() => setShowInformationPopup(true)}>Information</div>
+            <div className={styles.acheivmentsBox} onClick={() => setRanks(true)}>Achievements</div>
+
 
             <div className={styles.BioArea}></div>
 
@@ -146,7 +127,6 @@ const MainPage = () => {
             >
                 Edit Profile
             </div>
-            {showEditProfilePopup && <EditProfilePopup onClose={() => setShowEditProfilePopup(false)}/>}
 
             <div
                 className={styles.FriendsButton}
@@ -154,7 +134,6 @@ const MainPage = () => {
             >
                 Friends
             </div>
-            {showFriendsPopup && <FriendsListPopup onClose={() => setShowFriendsPopup(false)}/>}
 
             <div className={styles.NameDisplay}></div>
 
@@ -177,10 +156,13 @@ const MainPage = () => {
             <div className={styles.LeaderboardImg}>
                 <img src="/assets/LeadboardImg.png" alt="Logo" className={styles.LeaderboardImg}/>
             </div>
+            {showEditProfilePopup && <EditProfilePopup onClose={() => setShowEditProfilePopup(false)}/>}
             {showFriendsPopup && <FriendsListPopup onClose={() => setShowFriendsPopup(false)}/>}
             {showToDoScreen && <ToDoListPage onClose={() => setShowToDoScreen(false)}/>}
             {showFlashcardScreen && <FlashcardPage id="flashcardPopup" onClose={() => setShowFlashcardScreen(false)}/>}
             {showChallengeScreen && <ChallengePage onClose={() => setShowChallengeScreen(false)}/>}
+            {ranks && <Ranks onClose={() => setRanks(false)}/>}
+            {showInformationPopup && (<InformationPopup onClose={() => setShowInformationPopup(false)}/>)}
 
 
             <div className={styles.NameDisplay}>{user?.username}</div>
