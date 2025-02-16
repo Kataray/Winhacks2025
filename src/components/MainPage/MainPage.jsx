@@ -7,13 +7,15 @@ import ChallengePage from "../Challenges/ChallengePage.jsx";
 import SearchUser from "../ListOfPeople/SearchUser.jsx";
 import {UserContext} from "../../../UserContext.jsx";
 import ToDoListPage from "../ToDoListPage/ToDoListPage.jsx";
+import InformationPopup from "../InformationPopup/InformationPopup.jsx";
 
 const MainPage = () => {
     const [showEditProfilePopup, setShowEditProfilePopup] = useState(false);
     const [showFriendsPopup, setShowFriendsPopup] = useState(false);
     const [bio, setBio] = useState("");
+    const [showInformationPopup, setShowInformationPopup] = useState(false);
 
-    // State for avatar selections
+
     const [selectedHair, setSelectedHair] = useState("");
     const [selectedSkin, setSelectedSkin] = useState("");
     const [selectedMouth, setSelectedMouth] = useState("");
@@ -59,12 +61,28 @@ const MainPage = () => {
     return (
         <div className={styles.container}>
             <div className={styles.ProfileSection}></div>
-            <div className={styles.ChallengeFriendSection} onClick={() => setShowChallengeScreen(true)}></div>
-            <div className={styles.ToDoSection} onClick={() => setShowToDoScreen(true)}></div>
-            <div className={styles.FlashcardSection} onClick={() => setShowFlashcardScreen(true)}></div>
+            <div className={styles.ChallengeFriendSection} onClick={() => setShowChallengeScreen(true)}>
+                <p className={styles.ChallengesText}>Challenges and Leaderboard</p>
+                <p className={styles.smallText}>Compete with your friends for the top speed!</p>
+            </div>
+            <div className={styles.ToDoSection} onClick={() => setShowToDoScreen(true)}>
+                <p className={styles.toDoText}>To-Do List</p>
+                <p className={styles.smallText}>A handy list for</p>
+                <p className={styles.smallText}>manging anything!</p>
+            </div>
+            <div className={styles.FlashcardSection} onClick={() => setShowFlashcardScreen(true)}>
+                <p className={styles.flashcardText}>Flashcards</p>
+                <p className={styles.smallText}>Setup and create questions</p>
+                <p className={styles.smallText}>that you can then test on!</p>
+                <p className={styles.smallText}></p>
+                <p className={styles.smallText}>Use the sets!</p>
+                <p className={styles.smallText}>to compete with </p>
+                <p className={styles.smallText}>friends! </p>
+            </div>
+
 
             <div className={styles.testImage}>
-                <img src="/assets/ChopChopLogo.png" alt="Logo" className={styles.testImage}/>
+            <img src="/assets/ChopChopLogo.png" alt="Logo" className={styles.testImage}/>
             </div>
             <div className={styles.whiteCircleBg}>
                 <img src="/assets/ProfileBgEmpty.png" alt="CircleBg" className={styles.whiteCircleBg}/>
@@ -72,7 +90,12 @@ const MainPage = () => {
 
             <div className={styles.acheivmentsBox}>Achievements</div>
             <div className={styles.pointsBox}>Total Points: ____</div>
-            <div className={styles.rankBox}>Information</div>
+            <div className={styles.rankBox} onClick={() => setShowInformationPopup(true)}>
+                Information
+            </div>
+            {showInformationPopup && (
+                <InformationPopup onClose={() => setShowInformationPopup(false)}/>
+            )}
 
             <div className={styles.BioArea}></div>
 
@@ -130,9 +153,10 @@ const MainPage = () => {
             <div className={styles.ToDoImg}>
                 <img src="/assets/Todo.png" alt="Logo" className={styles.ToDoImg}/>
             </div>
-            <div className={styles.flashCardImg}>
+            <div className={styles.flashCardImg} onClick={() => setShowFlashcardScreen(true)}>
                 <img src="/assets/FlashCardImg.png" alt="Logo" className={styles.flashCardImg}/>
             </div>
+
             <div className={styles.LeaderboardImg}>
                 <img src="/assets/LeadboardImg.png" alt="Logo" className={styles.LeaderboardImg}/>
             </div>
@@ -143,6 +167,7 @@ const MainPage = () => {
 
 
             <div className={styles.NameDisplay}>{user?.username}</div>
+
         </div>
     );
 };

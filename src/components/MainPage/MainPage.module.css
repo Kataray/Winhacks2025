@@ -1,118 +1,117 @@
 html {
     height: 100vh;
 }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    .MainPage {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden; /* Prevents resizing content when viewport is smaller */
+    }
 
-.MainPage {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Prevents resizing content when viewport is smaller */
-}
+    body {
+        margin: 0;
+        overflow-x: hidden;
+    }
 
-body {
-    margin: 0;
-    overflow-x: hidden;
-}
+    .container {
+        /*position: relative;*/
+        background-color: #ffffff;
+        /*width: 100vw;*/
+        /*height: 670px;*/
+        /*display: flex;*/
+        box-sizing: border-box;
+        padding: 10px; /* Adds padding when resized too large */
+        overflow: hidden; /* Ensures no element resizes */
+    }
 
-.container {
-    /*position: relative;*/
-    background-color: #ffffff;
-    /*width: 100vw;*/
-    /*height: 670px;*/
-    /*display: flex;*/
-    box-sizing: border-box;
-    padding: 10px; /* Adds padding when resized too large */
-    overflow: hidden; /* Ensures no element resizes */
-}
+    .openButton {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #fff;
+        color: #333;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+    }
 
-.openButton {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 10px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: #fff;
-    color: #333;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
-}
+    .openButton:hover {
+        background-color: #f0f0f0;
+    }
 
-.openButton:hover {
-    background-color: #f0f0f0;
-}
+    .ProfileSection {
+        position: absolute;
+        top: 5%;
+        left: 3%;
+        bottom: 5%;
+        width: 30%;
+        background-color: #ffa85f;
+        cursor: pointer;
+        border: none;
+        border-radius: 15px;
+        color: #333;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+        transition: background-color 0.3s ease;
+    }
 
-.ProfileSection {
-    position: absolute;
-    top: 5%;
-    left: 3%;
-    bottom: 5%;
-    width: 30%;
-    background-color: #ffa85f;
-    cursor: pointer;
-    border: none;
-    border-radius: 15px;
-    color: #333;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
-    transition: background-color 0.3s ease;
-}
+    .ChallengeFriendSection {
+        position: absolute;
+        top: 60%;
+        right: 3%;
+        bottom: 5%;
+        width: 60%;
+        background-color: #f89464;
+        cursor: pointer;
+        border: none;
+        border-radius: 15px;
+        color: #333;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+        transition: background-color 0.3s ease;
+    }
 
-.ChallengeFriendSection {
-    position: absolute;
-    top: 60%;
-    right: 3%;
-    bottom: 5%;
-    width: 60%;
-    background-color: #f89464;
-    cursor: pointer;
-    border: none;
-    border-radius: 15px;
-    color: #333;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
-    transition: background-color 0.3s ease;
-}
+    .ToDoSection {
+        position: absolute;
+        top: 15%;
+        right: 3%;
+        bottom: 45%;
+        width: 29%;
+        background-color: #ffc99e;
+        cursor: pointer;
+        border: none;
+        border-radius: 15px;
+        color: #333;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+        transition: background-color 0.3s ease;
+    }
 
-.ToDoSection {
-    position: absolute;
-    top: 15%;
-    right: 3%;
-    bottom: 45%;
-    width: 29%;
-    background-color: #ffc99e;
-    cursor: pointer;
-    border: none;
-    border-radius: 15px;
-    color: #333;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
-    transition: background-color 0.3s ease;
-}
-
-.FlashcardSection {
-    position: absolute;
-    top: 15%;
-    right: 34%;
-    bottom: 45%;
-    width: 29%;
-    background-color: #ffc99e;
-    cursor: pointer;
-    border: none;
-    border-radius: 15px;
-    color: #333;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
-    transition: background-color 0.3s ease;
-}
+    .FlashcardSection {
+        position: absolute;
+        top: 15%;
+        right: 34%;
+        bottom: 45%;
+        width: 29%;
+        background-color: #ffc99e;
+        cursor: pointer;
+        border: none;
+        border-radius: 15px;
+        color: #333;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+        transition: background-color 0.3s ease;
+    }
 
 .acheivmentsBox {
     position: absolute;
@@ -207,29 +206,29 @@ body {
 }
 
 
-.whiteCircleBg {
-    position: absolute;
-    top: 8%;
-    left: 3.5%;
-    bottom: 60%;
-    width: 50%;
-    object-fit: cover;
+    .whiteCircleBg {
+        position: absolute;
+        top: 8%;
+        left: 3.5%;
+        bottom: 60%;
+        width: 50%;
+        object-fit: cover;
 
-}
+    }
 
-.BioArea {
-    position: absolute;
-    top: 62%;
-    left: 5%;
-    bottom: 10%;
-    width: 26%;
-    background-color: #ffffff;
-    object-fit: cover;
-    display: flex;
-    border: none;
-    border-radius: 15px;
-    color: #b1afaf;
-}
+    .BioArea {
+        position: absolute;
+        top: 62%;
+        left: 5%;
+        bottom: 10%;
+        width: 26%;
+        background-color: #ffffff;
+        object-fit: cover;
+        display: flex;
+        border: none;
+        border-radius: 15px;
+        color: #b1afaf;
+    }
 
 .Biography {
     position: absolute;
@@ -397,13 +396,13 @@ body {
 .avatarLayer {
     width: 67%;
     top: 17%;
-    left: 18%;
+    left:18%;
 }
 
 .avatarLayerHair {
     width: 90%;
     top: 8%;
-    left: 4.5%;
+    left:4.5%;
 }
 
 .avatarLayerShirt {
@@ -426,7 +425,7 @@ body {
 
 .circleCover {
     width: 105%;
-    top: -1%;
+    top:-1%;
     left: -1%;
 }
 
@@ -459,6 +458,7 @@ body {
     border: none;
     border-radius: 15px;
     color: #b1afaf;
+    cursor: pointer ;
 }
 
 .LeaderboardImg {
@@ -474,8 +474,8 @@ body {
 }
 
 .PointDisplay {
-    top: 0px;
-    left: 60px;
+    top:0px;
+    left:60px;
     font-size: min(1.5vw, 1.2em);
     font-weight: bold;
     color: #a40000;
@@ -483,11 +483,59 @@ body {
     text-align: center;
 
 }
-
 .AchievementDisplay {
 
 }
-
 .InfoDisplay {
 
+}
+
+.flashcardText {
+    border-radius: 8px; /* Rounded corners */
+    margin-top: 10px;
+    margin-left: 10px;/* Space above the section */
+    max-width: 800px; /* Maximum width */
+    /*margin-left: auto; !* Center it horizontally *!*/
+    margin-right: auto; /* Center it horizontally */
+    font-family: 'Arial', sans-serif;
+    font-size: 200%;
+    font-weight: bold;
+    color: #fff;
+}
+
+.toDoText {
+    border-radius: 8px; /* Rounded corners */
+    margin-top: 10px;
+    margin-left: 10px;/* Space above the section */
+    max-width: 800px; /* Maximum width */
+    /*margin-left: auto; !* Center it horizontally *!*/
+    margin-right: auto; /* Center it horizontally */
+    font-family: 'Arial', sans-serif;
+    font-size: 200%;
+    font-weight: bold;
+    color: #fff;
+}
+
+.ChallengesText { /* Space inside the box */
+    border-radius: 8px; /* Rounded corners */
+    margin-top: 10px;
+    margin-left: 10px;/* Space above the section */
+    max-width: 800px; /* Maximum width */
+    /*margin-left: auto; !* Center it horizontally *!*/
+    margin-right: auto; /* Center it horizontally */
+    font-family: 'Arial', sans-serif;
+    font-size: 200%;
+    font-weight: bold;
+    color: #fff;
+}
+
+.smallText {
+    padding: 2px;
+    border-radius: 2px;
+    max-width: 800px;
+    font-family: 'Arial', sans-serif;
+    font-size: 100%;
+    font-weight: bold;
+    margin-left: 10px;
+    color: #fff;
 }
