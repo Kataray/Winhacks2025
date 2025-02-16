@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import styles from "./ToDoListPage.module.css";
-import Tasks from "../tasks/Tasks.jsx";
+import Tasks from "./Tasks.jsx";
+import {UserContext} from "../../../UserContext.jsx";
 
 const MAX_TASKS = 3;
 
@@ -10,6 +11,19 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
     const [taskCounter, setTaskCounter] = useState(0);
     const [currentCategory, setCurrentCategory] = useState(null);
     const [localTasks, setLocalTasks] = useState(tasks || { school: [], home: [], misc: [] });
+    const [loading, setLoading] = React.useState(true);
+
+    const { user, addTask } = useContext(UserContext);
+
+    useEffect(() => {
+        if (user !== undefined) {
+            setLoading(false);
+        }
+    }, [user]);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
 
     const handleApplyTasks = (newTasks) => {
@@ -22,7 +36,7 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                 [currentCategory]: [...prevTasks[currentCategory], ...newTasks],
             }));
 
-            setTaskCounter((prevCount) => prevCount + newTasks.length);
+            addTask(newTasks, currentCategory);
         }
         setIsPopupOpen(false);
     };
@@ -63,8 +77,7 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
 
 
     const handleFinalApply = () => {
-
-        onFinalApply(localTasks);
+        onFinalApply(user.todoLists); // ✅ Send updated tasks to `MainPage.jsx`
     };
 
     return (
@@ -73,7 +86,6 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                 <button className={styles.toDoComeUp} onClick={onClose}>
                     &times;
                 </button>
-
 
                 <div className={styles.toDoSections}>
 
@@ -85,12 +97,16 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                                 setCurrentCategory("school");
                                 setIsPopupOpen(true);
                             }}
+
                             disabled={localTasks.school.length >= MAX_TASKS}
+
                         >
                             Add Task
                         </button>
                         <ul className={styles.toDoTaskList}>
-                            {localTasks.school.map((task, index) => (
+
+                            {user.todoLists.school.map((task, index) => (
+
                                 <li key={index} className={styles.toDoTaskItem}>
                                     {task}
                                     <button className={styles.toDoMoveUpButton}
@@ -122,10 +138,12 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                             Add Task
                         </button>
                         <ul className={styles.toDoTaskList}>
-                            {localTasks.home.map((task, index) => (
+
+                            {user.todoLists.home.map((task, index) => (
                                 <li key={index} className={styles.toDoTaskItem}>
                                     {task}
 
+                                    {/* ✅ Corrected buttons */}
                                     <button className={styles.toDoMoveUpButton}
                                             onClick={() => handleMoveUp("home", index)}>▲
                                     </button>
@@ -151,14 +169,16 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                                 setIsPopupOpen(true);
                             }}
                             disabled={localTasks.misc.length >= MAX_TASKS}
+
                         >
                             Add Task
                         </button>
                         <ul className={styles.toDoTaskList}>
-                            {localTasks.misc.map((task, index) => (
+                            {user.todoLists.misc.map((task, index) => (
                                 <li key={index} className={styles.toDoTaskItem}>
                                     {task}
 
+                                    {/* ✅ Corrected buttons */}
                                     <button className={styles.toDoMoveUpButton}
                                             onClick={() => handleMoveUp("misc", index)}>▲
                                     </button>
@@ -183,6 +203,7 @@ const ToDoListPage = ({ onClose, onFinalApply, tasks }) => {
                         existingTasks={localTasks[currentCategory]}
                     />
                 )}
+
 
                 <button className={styles.toDoApplyButton} onClick={handleFinalApply}>
                     Save

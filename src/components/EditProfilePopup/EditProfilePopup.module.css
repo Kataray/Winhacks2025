@@ -1,0 +1,195 @@
+/* Overlay to block background interactions */
+.editProfileOverlay {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Darker overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it’s above all elements */
+}
+
+/* Main popup container */
+.editProfilePopup {
+    background-color: #f7caa1;
+    width: 900px;
+    height: 600px;
+    display: flex;
+    flex-direction: row; /* Side-by-side layout */
+    justify-content: space-between;
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Close button */
+.editProfileCloseButton {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Left Panel (Hair & Skin Options) */
+.leftPanel {
+    width: 225px;
+    background-color: #f7d8b5;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+/* Right Panel (Eyes & Mouth Options) */
+.rightPanel {
+    width: 180px;
+    background-color: #f7d8b5;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+    overflow-y: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Selection Containers */
+.selectionContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    background: #fce1c8;
+    border-radius: 10px;
+    max-height: 200px;
+    overflow-y: auto; /* Allows scrolling if needed */
+}
+
+/* Ensures clickable elements (eyes, mouth, hair, skin) */
+.selectionItem {
+    width: 100px;
+    height: 105px;
+    margin: 6px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.selectionItem:hover {
+    transform: scale(1.1);
+}
+
+/* Center Avatar */
+.mainCharacter {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Ensure avatar elements (face, hair, etc.) are layered correctly */
+.avatarLayerHair {
+    top: 95px;
+    position: absolute;
+    width: 370px;
+    right: 2px;
+}
+.avatarLayer {
+    position: absolute;
+    width: 270px;
+    right: 44px;
+    top:138px;
+}
+.avatarLayerEyes {
+    position: absolute;
+    width: 160px;
+    right: 105px;
+}
+.avatarLayerMouth {
+    position: absolute;
+    width: 80px;
+    top: 310px;
+    right:140px;
+}
+.avatarLayerShirt {
+    position: absolute;
+    width: 246px;
+    top: 387px;
+    left: 84px;
+}
+
+.circleCover {
+    position: absolute;
+    width: 420px;
+    right: -30px;
+}
+
+.editProfileOverlay * {
+    pointer-events: auto;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.nameInputContainer {
+    position: absolute;  /* Keeps it at the bottom */
+    left: 835px;
+    bottom: 65px;
+    transform: translateX(-50%);
+    width: 300px;  /* Keeps everything from stretching */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.nameInput {
+    width: 280px;  /* Slightly smaller than the container */
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    outline: none;
+}
+
+.nameInput:focus {
+    border-color: #007bff;
+}
+
+.saveButton {
+    position: absolute;
+    top: 2px;  /* Adjust this to move it down */
+    left: 300px; /* Adjust this to move it sideways */
+    width: 90px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    background-color: #28a745;
+    color: white;
+}
+
+.saveButton {
+    background-color: #28a745;
+    color: white;
+}
+
+.saveButton:hover {
+    background-color: #218838;
+}
+
+.cancelButton:hover {
+    background-color: #c82333;
+}
