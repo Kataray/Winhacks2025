@@ -1,4 +1,4 @@
-.overlay {
+.overTask {
     position: fixed;
     top: 0;
     left: 0;
@@ -11,17 +11,18 @@
     z-index: 1000;
 }
 
-.popup {
-    background-color: white;
+.Taskup {
+    background-color: #ffe1cd;
     height: 90%;
     width: 50%;
     padding: 20px;
+    gap: 20px;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
     position: relative;
 }
-.closeButton {
+.TaskcloseButton {
     position: absolute;
     top: 10px;
     right: 15px;
@@ -39,28 +40,29 @@
     border: none;
     font-size: 40px;
     cursor: pointer;
-}
+    }
 .inputField {
     width: 50%;
     height: 50px;
+    margin-right: 30px;
     border-radius: 20px;
-    margin-top: 20px; /* Ajust the spacing as needed */
+    margin-top: 20px;
     padding: 10px 20px;
-    background-color: white;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
-    -10px -10px 20px rgba(255, 255, 255, 0.9); /* Softer dark shadow */
+    background-color: #fff2ea;
+    border: #ffd9c0;
     cursor: pointer;
 }
 .addButton{
     width: 30%;
     height: 50px;
     border-radius: 20px;
-    margin-top: 20px; /* Ajust the spacing as needed */
+    margin-top: 20px;
     padding: 10px 20px;
-    background-color: #ec8d52;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
-    -10px -10px 20px rgba(255, 255, 255, 0.9); /* Softer dark shadow */
+    background:linear-gradient(45deg,#FFC0CB,#ffba88);
+    border: none;
     cursor: pointer;
+    font-family: "carter One", sans-serif;
+    color:White;
 
 }
 .taskList {
@@ -74,27 +76,35 @@
     width: 50%;
     height: 50px;
     border-radius: 20px;
-    margin-top: 30px; /* Ajust the spacing as needed */
+    margin-top: 30px;
     margin-left: 100px;
     padding: 10px 20px;
-    background-color: #e49665;
-    border-color: black;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
-    -10px -10px 20px rgba(255, 255, 255, 0.9); /* Softer dark shadow */
+    color: white;
+    background-color: #ff9f68;
     cursor: pointer;
 }
 .applyButton {
     position: absolute;
-    bottom: 20px; /* Distance from the bottom */
-    right: 20px; /* Distance from the right */
+    margin-right: 230px;
+    bottom: 20px;
+    right: 20px;
     width: 30%;
     height: 50px;
+    border: none;
+    color: white;
     border-radius: 20px; /* Ajust the spacing as needed */
     padding: 10px 20px;
-    background-color: #a53030;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3),
-    -10px -10px 20px rgba(255, 255, 255, 0.9); /* Softer dark shadow */
+    background: linear-gradient(45deg, #ffd2c0, #FFBA88);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
     cursor: pointer;
+}
+.applyButton:active{
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.applyButton:hover{
+    background:linear-gradient(45deg,#ff6b42,#e88b50);
+    animation: shake 0.3s ease-in-out;
 }
 
 .errorText {
