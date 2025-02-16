@@ -20,16 +20,28 @@ const GetUsers = ({userData, friendsOnly}) => {
 
                 if (snapshot.exists()) {
                     const data = snapshot.val();
-                    // Convert object to array
-                    const usersArray = Object.keys(data).map((userId) => ({
-                        id: userId,
-                        ...data[userId],
-                    })).filter((user) =>
-                        user.username !== userData.username
-                    ).filter((user) =>
-                        (!friendsOnly || !userData.friends.includes(user.id))
-                    )
-                    setUsers(usersArray);
+                    if (friendsOnly) {
+                        // Convert object to array
+                        const usersArray = Object.keys(data).map((userId) => ({
+                            id: userId,
+                            ...data[userId],
+                        })).filter((user) =>
+                            user.username !== userData.username
+                        ).filter((user) =>
+                            userData.friends.includes(user.id)
+                        )
+                        setUsers(usersArray);
+
+                    }
+                    else {
+                        const usersArray = Object.keys(data).map((userId) => ({
+                            id: userId,
+                            ...data[userId],
+                        })).filter((user) =>
+                            (user.username !== userData.username && !userData.friends.includes(user.id))
+                        )
+                        setUsers(usersArray);
+                    }
                 } else {
                     console.log("No anonymous users found.");
                     setUsers([]);
